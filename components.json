@@ -1,0 +1,7 @@
+{
+  "explode" : {
+    "author": "Diego Marcos",
+    "description": "Makes the geometry explode",
+    "url": "https://raw.githubusercontent.com/dmarcos/a-invaders/5f6c25f/js/components/explode.js"
+  }
+}
