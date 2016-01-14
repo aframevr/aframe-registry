@@ -2,16 +2,16 @@
   "collider" : {
     "author": "Diego Marcos",
     "description": "Triggers events when object collide",
-    "url": "https://raw.githubusercontent.com/dmarcos/a-invaders/8581e8e/js/components/collider.js"
+    "url": "https://rawgit.com/dmarcos/a-invaders/8581e8e/js/components/collider.js"
   },
   "explode" : {
     "author": "Diego Marcos",
     "description": "Makes the geometry explode",
-    "url": "https://raw.githubusercontent.com/dmarcos/a-invaders/8581e8e/js/components/explode.js"
+    "url": "https://rawgit.com/dmarcos/a-invaders/8581e8e/js/components/explode.js"
   },
   "spawner" : {
     "author": "Diego Marcos",
     "description": "Makes the geometry explode",
-    "url": "https://raw.githubusercontent.com/dmarcos/a-invaders/5f6c25f/js/components/spawner.js"
+    "url": "https://rawgit.com/dmarcos/a-invaders/8581e8e/js/components/spawner.js"
   }
 }
