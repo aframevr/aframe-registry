@@ -11,7 +11,7 @@
   },
   "spawner" : {
     "author": "Diego Marcos",
-    "description": "Makes the geometry explode",
+    "description": "Spawns an entity on an event",
     "url": "https://rawgit.com/dmarcos/a-invaders/31f5a7/js/components/spawner.js"
   }
 }
