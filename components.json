@@ -13,5 +13,15 @@
     "author": "Diego Marcos",
     "description": "Spawns an entity on an event",
     "url": "https://rawgit.com/dmarcos/a-invaders/31f5a7/js/components/spawner.js"
-  }
+  },
+  "noise" : {
+    "author": "Diego Marcos",
+    "description": "Vertex shader distortion",
+    "url": "https://raw.githubusercontent.com/aframevr/aframe/50a07cac9cd2f764b9ff4cd0a5bb20e408f8f4d6/examples/test-shaders/shaders/noise.js"
+  },
+  "sky" : {
+    "author": "Diego Marcos",
+    "description": "Sky & sun shader",
+    "url": "https://raw.githubusercontent.com/aframevr/aframe/50a07cac9cd2f764b9ff4cd0a5bb20e408f8f4d6/examples/test-shaders/shaders/sky.js"
+  }  
 }
