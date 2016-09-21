@@ -1,6 +1,15 @@
 {
   "name": "aframe-registry",
   "version": "0.1.0",
-  "description": "Curated collection of third-party A-Frame components.",
-  "main": "components.json"
+  "description": "Curated collection of community A-Frame components.",
+  "main": "build/0.3.x.json",
+  "scripts": {
+    "metadata": "node scripts/fetchMetadata.js"
+  },
+  "devDependencies": {
+    "glob": "^7.1.0",
+    "superagent": "^2.3.0",
+    "superagent-promise": "^1.1.0",
+    "url-join": "^1.1.0"
+  }
 }
