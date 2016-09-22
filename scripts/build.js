@@ -1,3 +1,4 @@
+var deepExtend = require('deep-extend');
 var fs = require('fs');
 var glob = require('glob');
 var path = require('path');
@@ -45,21 +46,15 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
     // No component version registered for this version of A-Frame. Walk backwards.
     // Cascading effect.
     if (!component.versions[aframeVersion]) {
-      var oldVersionsProcessed = [];
-      for (var i = index - 1; i >= 0; i--) {
-        oldVersionsProcessed.push(componentsProcessed[i]);
-      }
-      return Promise.all(oldVersionsProcessed).then(function () {
-        for (var i = index - 1; i >= 0; i--) {
-          var oldAFrameVersion = AFRAME_VERSIONS[i];
-          if (OUTPUT[oldAFrameVersion].components[npmName]) {
-            console.log(npmName, 'marked to fall back to', oldAFrameVersion, 'entry', 'for',
-                        aframeVersion);
-            OUTPUT[aframeVersion][npmName] = OUTPUT[oldAFrameVersion][npmName];
-            OUTPUT[aframeVersion][npmName].compatibilityFallback = true;
-            OUTPUT[aframeVersion][npmName].registeredVersion = oldAFrameVersion;
-            return;
-          }
+      return componentsProcessed[index - 1].then(function () {
+        var oldAFrameVersion = AFRAME_VERSIONS[index - 1];
+        if (OUTPUT[oldAFrameVersion].components[npmName]) {
+          console.log(npmName, 'marked to fall back to', oldAFrameVersion, 'entry', 'for',
+                      aframeVersion);
+          var oldEntry = deepExtend({} , OUTPUT[oldAFrameVersion].components[npmName]);
+          var component = OUTPUT[aframeVersion].components[npmName] = oldEntry;
+          component.fallbackVersion = oldAFrameVersion;
+          return;
         }
       });
     }
@@ -78,9 +73,8 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
         OUTPUT[aframeVersion].components[npmName] = {
           description: npm.description,
-          file: urlJoin(packageRoot, component.path),
-          name: component.name,
-          registeredVersion: aframeVersion
+          file: urlJoin(packageRoot, component.versions[aframeVersion].path),
+          name: component.name
         };
       }, function metadataFetchedError (err) {
         console.error('Error fetching', npmName, packageJsonUrl);
@@ -90,7 +84,6 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
 
 // Write JSON file.
 Promise.all(metadataFetched).then(function writeOutput () {
-  console.log(OUTPUT);
   console.log('Registry processed, writing files...');
   Object.keys(OUTPUT).forEach(function (aframeVersion) {
     var output = JSON.stringify(OUTPUT[aframeVersion], null, '  ');
@@ -98,4 +91,7 @@ Promise.all(metadataFetched).then(function writeOutput () {
     console.log('Writing', outputPath, '...');
     fs.writeFileSync(outputPath, output);
   });
+  console.log('Processing complete!');
+}, function error (err) {
+  console.log(err);
 });
