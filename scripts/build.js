@@ -46,16 +46,18 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
     // No component version registered for this version of A-Frame. Walk backwards.
     // Cascading effect.
     if (!component.versions[aframeVersion]) {
-      return componentsProcessed[index - 1].then(function () {
+      if (index === 0) { return; }  // No previous version.
+
+      return componentsProcessed[index - 1].then(function fallback () {
         var oldAFrameVersion = AFRAME_VERSIONS[index - 1];
-        if (OUTPUT[oldAFrameVersion].components[npmName]) {
-          console.log(npmName, 'marked to fall back to', oldAFrameVersion, 'entry', 'for',
-                      aframeVersion);
-          var oldEntry = deepExtend({} , OUTPUT[oldAFrameVersion].components[npmName]);
-          var component = OUTPUT[aframeVersion].components[npmName] = oldEntry;
-          component.fallbackVersion = oldAFrameVersion;
-          return;
-        }
+
+        if (!OUTPUT[oldAFrameVersion].components[npmName]) { return; }
+
+        console.log(npmName, 'marked to fall back to', oldAFrameVersion, 'entry', 'for',
+                    aframeVersion);
+        var oldEntry = deepExtend({} , OUTPUT[oldAFrameVersion].components[npmName]);
+        var component = OUTPUT[aframeVersion].components[npmName] = oldEntry;
+        component.fallbackVersion = oldAFrameVersion;
       });
     }
 

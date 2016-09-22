@@ -16,3 +16,10 @@ components:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-text-component.min.js
+
+  aframe-sun-sky:
+    name: sun-sky
+    versions:
+      0.3.0:
+        version: ^3.0.0
+        path: dist/aframe-sun-sky-component.min.js
