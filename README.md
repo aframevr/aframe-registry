@@ -1,4 +1,4 @@
-# aframe-components
+# aframe-registry
 
 Curated collection of third-party A-Frame components.
 

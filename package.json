@@ -1,5 +1,5 @@
 {
-  "name": "aframe-components",
+  "name": "aframe-registry",
   "version": "0.1.0",
   "description": "Curated collection of third-party A-Frame components.",
   "main": "components.json"
