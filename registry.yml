@@ -1,0 +1,7 @@
+components:
+  aframe-bmfont-text-component:
+    name: bmfont-text
+    versions:
+      0.2.0:
+        version: 0.1.x
+        path: dist/aframe-bmfont-text-component.min.js

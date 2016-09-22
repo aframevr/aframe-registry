@@ -1,9 +1,0 @@
-{
-  "components": {
-    "aframe-bmfont-text-component": {
-      "name": "bmfont-text",
-      "version": "0.1.x",
-      "path": "dist/aframe-bmfont-text-component.min.js"
-    }
-  }
-}

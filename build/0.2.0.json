@@ -1,0 +1,10 @@
+{
+  "components": {
+    "aframe-bmfont-text-component": {
+      "description": "BMFont Text component for A-Frame.",
+      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/",
+      "name": "bmfont-text",
+      "registeredVersion": "0.2.0"
+    }
+  }
+}

@@ -4,10 +4,11 @@
   "description": "Curated collection of community A-Frame components.",
   "main": "build/0.3.x.json",
   "scripts": {
-    "metadata": "node scripts/fetchMetadata.js"
+    "build": "node scripts/build.js"
   },
   "devDependencies": {
     "glob": "^7.1.0",
+    "js-yaml": "^3.6.1",
     "superagent": "^2.3.0",
     "superagent-promise": "^1.1.0",
     "url-join": "^1.1.0"
