@@ -1,5 +1,7 @@
 # aframe-registry
 
+> Work in progress.
+
 Curated collection of third-party A-Frame components.
 
 Distributed as a JSON file for programmatic consumption.
