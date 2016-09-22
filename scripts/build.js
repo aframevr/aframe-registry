@@ -72,8 +72,11 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
         var npm = res.body;
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
         OUTPUT[aframeVersion].components[npmName] = {
+          author: npm.author,
           description: npm.description,
           file: urlJoin(packageRoot, component.versions[aframeVersion].path),
+          homepage: npm.homepage,
+          license: npm.license,
           name: component.name
         };
       }, function metadataFetchedError (err) {

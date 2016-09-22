@@ -1,11 +1,13 @@
 {
   "components": {
     "aframe-bmfont-text-component": {
+      "author": "Ben Pyrik <ben@wsundine.com>",
       "description": "BMFont Text component for A-Frame.",
       "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
       "name": "bmfont-text"
     },
     "aframe-text-component": {
+      "author": "Kevin Ngo <me@ngokevin.com>",
       "description": "Text component for A-Frame VR.",
       "file": "https://unpkg.com/aframe-text-component@0.1.x/dist/aframe-text-component.min.js",
       "name": "text"
