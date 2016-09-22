@@ -4,6 +4,8 @@
 
 Curated collection of community A-Frame components.
 
+[VIEW SITE](https://aframevr.github.io/aframe-registry/)
+
 ## How It Works
 
 A single registry file is maintained at `registry.yml`. The format of a component looks like:
