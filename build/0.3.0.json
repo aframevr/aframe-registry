@@ -1,13 +1,5 @@
 {
   "components": {
-    "aframe-text-component": {
-      "author": "Kevin Ngo <me@ngokevin.com>",
-      "description": "Text component for A-Frame VR.",
-      "file": "https://unpkg.com/aframe-text-component@0.3.x/dist/aframe-text-component.min.js",
-      "homepage": "https://github.com/ngokevin/aframe-text-component#readme",
-      "license": "MIT",
-      "name": "text"
-    },
     "aframe-bmfont-text-component": {
       "author": "Ben Pyrik <ben@wsundine.com>",
       "description": "BMFont Text component for A-Frame.",
@@ -17,13 +9,38 @@
       "name": "bmfont-text",
       "fallbackVersion": "0.2.0"
     },
-    "aframe-sun-sky": {
+    "aframe-animation-component": {
       "author": "Kevin Ngo <me@ngokevin.com>",
-      "description": "Gradient sky with adjustable sun in A-Frame",
-      "file": "https://unpkg.com/aframe-sun-sky@^3.0.0/dist/aframe-sun-sky-component.min.js",
-      "homepage": "https://github.com/ngokevin/kframe/tree/components/sun-sky#readme",
+      "description": "Animation component for A-Frame.",
+      "file": "https://unpkg.com/aframe-animation-component@^3.0.1/dist/aframe-animation-component.min.js",
+      "homepage": "https://github.com/ngokevin/aframe-animation-component#readme",
       "license": "MIT",
-      "name": "sun-sky"
+      "name": "animation"
+    },
+    "aframe-text-component": {
+      "author": "Kevin Ngo <me@ngokevin.com>",
+      "description": "Text component for A-Frame VR.",
+      "file": "https://unpkg.com/aframe-text-component@0.3.x/dist/aframe-text-component.min.js",
+      "homepage": "https://github.com/ngokevin/aframe-text-component#readme",
+      "license": "MIT",
+      "name": "text"
+    },
+    "aframe-stereo-component": {
+      "author": "Óscar Marín Miró <oscar@outliers.es> @oscarmarinmiro",
+      "description": "Stereoscopic component for A-Frame VR.",
+      "file": "https://unpkg.com/aframe-stereo-component@0.2.x/dist/aframe-stereo-component.min.js",
+      "homepage": "https://github.com/oscarmarinmiro/aframe-stereo-component#readme",
+      "license": "MIT",
+      "name": "stereo",
+      "fallbackVersion": "0.2.0"
+    },
+    "aframe-mountain-component": {
+      "author": "Kevin Ngo <me@ngokevin.com>",
+      "description": "Mountain terrain in A-Frame using randomly-generated height maps",
+      "file": "https://unpkg.com/aframe-mountain-component@0.3.x/dist/aframe-mountain-component.min.js",
+      "homepage": "https://github.com/ngokevin/kframe/tree/components/mountain#readme",
+      "license": "MIT",
+      "name": "mountain"
     }
   }
 }

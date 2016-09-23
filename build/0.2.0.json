@@ -1,5 +1,13 @@
 {
   "components": {
+    "aframe-bmfont-text-component": {
+      "author": "Ben Pyrik <ben@wsundine.com>",
+      "description": "BMFont Text component for A-Frame.",
+      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
+      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
+      "license": "MIT",
+      "name": "bmfont-text"
+    },
     "aframe-text-component": {
       "author": "Kevin Ngo <me@ngokevin.com>",
       "description": "Text component for A-Frame VR.",
@@ -8,13 +16,13 @@
       "license": "MIT",
       "name": "text"
     },
-    "aframe-bmfont-text-component": {
-      "author": "Ben Pyrik <ben@wsundine.com>",
-      "description": "BMFont Text component for A-Frame.",
-      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
-      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
+    "aframe-stereo-component": {
+      "author": "Óscar Marín Miró <oscar@outliers.es> @oscarmarinmiro",
+      "description": "Stereoscopic component for A-Frame VR.",
+      "file": "https://unpkg.com/aframe-stereo-component@0.2.x/dist/aframe-stereo-component.min.js",
+      "homepage": "https://github.com/oscarmarinmiro/aframe-stereo-component#readme",
       "license": "MIT",
-      "name": "bmfont-text"
+      "name": "stereo"
     }
   }
 }

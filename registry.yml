@@ -1,11 +1,32 @@
 components:
 
+  aframe-animation-component:
+    name: animation
+    versions:
+      0.3.0:
+        version: ^3.0.1
+        path: dist/aframe-animation-component.min.js
+
   aframe-bmfont-text-component:
     name: bmfont-text
     versions:
       0.2.0:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
+
+  aframe-mountain-component:
+    name: mountain
+    versions:
+      0.3.0:
+        version: 0.3.x
+        path: dist/aframe-mountain-component.min.js
+
+  aframe-stereo-component:
+    name: stereo
+    versions:
+      0.2.0:
+        version: 0.2.x
+        path: dist/aframe-stereo-component.min.js
 
   aframe-text-component:
     name: text
@@ -16,10 +37,3 @@ components:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-text-component.min.js
-
-  aframe-sun-sky:
-    name: sun-sky
-    versions:
-      0.3.0:
-        version: ^3.0.0
-        path: dist/aframe-sun-sky-component.min.js
