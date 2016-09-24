@@ -5,13 +5,15 @@
   "main": "build/0.3.x.json",
   "scripts": {
     "build": "node scripts/build.js",
-    "site": "node scripts/site.js"
+    "site": "node scripts/site.js",
+    "postinstall": "shx cp -n scripts/templates/config.local.js scripts"
   },
   "devDependencies": {
     "deep-extend": "^0.4.1",
     "glob": "^7.1.0",
     "js-yaml": "^3.6.1",
     "nunjucks": "^2.5.2",
+    "shx": "^0.1.4",
     "superagent": "^2.3.0",
     "superagent-promise": "^1.1.0",
     "url-join": "^1.1.0",
