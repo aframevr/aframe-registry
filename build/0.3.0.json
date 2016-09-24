@@ -1,46 +1,66 @@
 {
   "components": {
-    "aframe-bmfont-text-component": {
-      "author": "Ben Pyrik <ben@wsundine.com>",
-      "description": "BMFont Text component for A-Frame.",
-      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
-      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
+    "aframe-text-component": {
+      "author": "Kevin Ngo <me@ngokevin.com>",
+      "description": "Text component for A-Frame VR.",
+      "file": "https://unpkg.com/aframe-text-component@0.3.x/dist/aframe-text-component.min.js",
+      "githubCreated": "2015-12-18T23:07:33Z",
+      "githubUpdated": "2016-09-19T19:34:26Z",
+      "githubUrl": "https://github.com/ngokevin/aframe-text-component",
+      "githubStars": 45,
+      "homepage": "https://github.com/ngokevin/aframe-text-component#readme",
       "license": "MIT",
-      "name": "bmfont-text",
-      "fallbackVersion": "0.2.0"
+      "name": "text"
     },
     "aframe-animation-component": {
       "author": "Kevin Ngo <me@ngokevin.com>",
       "description": "Animation component for A-Frame.",
       "file": "https://unpkg.com/aframe-animation-component@^3.0.1/dist/aframe-animation-component.min.js",
+      "githubCreated": "2016-07-17T17:27:15Z",
+      "githubUpdated": "2016-09-19T19:34:59Z",
+      "githubUrl": "https://github.com/ngokevin/aframe-animation-component",
+      "githubStars": 7,
       "homepage": "https://github.com/ngokevin/aframe-animation-component#readme",
       "license": "MIT",
       "name": "animation"
-    },
-    "aframe-text-component": {
-      "author": "Kevin Ngo <me@ngokevin.com>",
-      "description": "Text component for A-Frame VR.",
-      "file": "https://unpkg.com/aframe-text-component@0.3.x/dist/aframe-text-component.min.js",
-      "homepage": "https://github.com/ngokevin/aframe-text-component#readme",
-      "license": "MIT",
-      "name": "text"
-    },
-    "aframe-stereo-component": {
-      "author": "Óscar Marín Miró <oscar@outliers.es> @oscarmarinmiro",
-      "description": "Stereoscopic component for A-Frame VR.",
-      "file": "https://unpkg.com/aframe-stereo-component@0.2.x/dist/aframe-stereo-component.min.js",
-      "homepage": "https://github.com/oscarmarinmiro/aframe-stereo-component#readme",
-      "license": "MIT",
-      "name": "stereo",
-      "fallbackVersion": "0.2.0"
     },
     "aframe-mountain-component": {
       "author": "Kevin Ngo <me@ngokevin.com>",
       "description": "Mountain terrain in A-Frame using randomly-generated height maps",
       "file": "https://unpkg.com/aframe-mountain-component@0.3.x/dist/aframe-mountain-component.min.js",
+      "githubCreated": "2016-06-01T21:58:43Z",
+      "githubUpdated": "2016-09-24T00:50:05Z",
+      "githubUrl": "https://github.com/ngokevin/kframe",
+      "githubStars": 31,
       "homepage": "https://github.com/ngokevin/kframe/tree/components/mountain#readme",
       "license": "MIT",
       "name": "mountain"
+    },
+    "aframe-stereo-component": {
+      "author": "Óscar Marín Miró <oscar@outliers.es> @oscarmarinmiro",
+      "description": "Stereoscopic component for A-Frame VR.",
+      "file": "https://unpkg.com/aframe-stereo-component@0.2.x/dist/aframe-stereo-component.min.js",
+      "githubCreated": "2016-02-28T22:55:13Z",
+      "githubUpdated": "2016-09-09T12:38:40Z",
+      "githubUrl": "https://github.com/oscarmarinmiro/aframe-stereo-component",
+      "githubStars": 24,
+      "homepage": "https://github.com/oscarmarinmiro/aframe-stereo-component#readme",
+      "license": "MIT",
+      "name": "stereo",
+      "fallbackVersion": "0.2.0"
+    },
+    "aframe-bmfont-text-component": {
+      "author": "Ben Pyrik <ben@wsundine.com>",
+      "description": "BMFont Text component for A-Frame.",
+      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
+      "githubCreated": "2016-06-21T20:13:52Z",
+      "githubUpdated": "2016-09-20T04:22:00Z",
+      "githubUrl": "https://github.com/bryik/aframe-bmfont-text-component",
+      "githubStars": 21,
+      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
+      "license": "MIT",
+      "name": "bmfont-text",
+      "fallbackVersion": "0.2.0"
     }
   }
 }

@@ -3,8 +3,11 @@ var fs = require('fs');
 var glob = require('glob');
 var path = require('path');
 var req = require('superagent-promise')(require('superagent'), Promise);
+var Url = require('urlgray');
 var urlJoin = require('url-join');
 var yaml = require('js-yaml');
+
+var config = require('./config');
 
 var CDN = 'https://unpkg.com/';
 
@@ -61,29 +64,9 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
       });
     }
 
-    // Build URL from component version and path.
-    var componentVersion = component.versions[aframeVersion].version;
-    var packageRoot = urlJoin(CDN, npmName + '@' + componentVersion);
-    var packageJsonUrl = urlJoin(packageRoot, 'package.json');
-
-    console.log('Fetching', npmName, componentVersion, '...');
-    return req
-      .get(packageJsonUrl)
-      .then(function metadataFetchedSuccess (res) {
-        // Gather metadata.
-        var npm = res.body;
-        console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
-        OUTPUT[aframeVersion].components[npmName] = {
-          author: npm.author,
-          description: npm.description,
-          file: urlJoin(packageRoot, component.versions[aframeVersion].path),
-          homepage: npm.homepage,
-          license: npm.license,
-          name: component.name
-        };
-      }, function metadataFetchedError (err) {
-        console.error('Error fetching', npmName, packageJsonUrl);
-      });
+    return fetchMetadata(npmName, component, aframeVersion).then(function (metadata) {
+      OUTPUT[aframeVersion].components[npmName] = metadata;
+    }, console.error);
   }
 });
 
@@ -100,3 +83,110 @@ Promise.all(metadataFetched).then(function writeOutput () {
 }, function error (err) {
   console.log(err);
 });
+
+/**
+ * Fetch metadata from npm and GitHub.
+ *
+ * @param {string} npmName
+ * @param {string} component
+ * @returns {Promise}
+ */
+function fetchMetadata (npmName, component, aframeVersion) {
+  var componentVersion = component.versions[aframeVersion].version;
+  var packageRoot = urlJoin(CDN, npmName + '@' + componentVersion);
+
+  return new Promise(function (resolve) {
+    console.log('Fetching from npm', npmName, componentVersion, '...');
+    fetchNpm(packageRoot).then(function (npmData) {
+      fetchGithub(npmData).then(function (githubData) {
+        console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
+        resolve({
+          author: npmData.author,
+          description: npmData.description,
+          file: urlJoin(packageRoot, component.versions[aframeVersion].path),
+          githubCreated: githubData.created_at,
+          githubUpdated: githubData.updated_at,
+          githubUrl: githubData.html_url,
+          githubStars: githubData.stargazers_count,
+          homepage: npmData.homepage,
+          license: npmData.license,
+          name: component.name
+        });
+      }, console.error);
+    }, console.error);
+  });
+}
+
+/**
+ * Fetch metadata from npm.
+ *
+ * @param {string} packageRoot
+ * @returns {Promise}
+ */
+function fetchNpm (packageRoot) {
+  // Build npm URL from component version and path.
+  var packageJsonUrl = urlJoin(packageRoot, 'package.json');
+  return new Promise(function (resolve, reject) {
+    req
+      .get(packageJsonUrl)
+      .then(function metadataFetchedSuccess (res) {
+        resolve(res.body);
+      }, function metadataFetchedError (err) {
+        console.error('Error fetching', npmName, packageJsonUrl);
+        reject();
+      });
+  });
+}
+
+/**
+ * Fetch metadata from GitHub.
+ *
+ * @param {Object} npmData - package.json metadata.
+ * @returns {Promise}
+ */
+function fetchGithub (npmData) {
+  var GITHUB_API = 'https://api.github.com/';
+  var repo = inferGithubRepository(npmData.repository);
+
+  if (!repo) { return new Promise.resolve({}); }
+
+  var repoInfoUrl = addToken(urlJoin(GITHUB_API, 'repos/', repo));
+  return new Promise(function (resolve, reject) {
+    console.log('Fetching from GitHub', repo, '...');
+    req
+      .get(repoInfoUrl)
+      .then(function metadataFetchedSuccess (res) {
+        resolve(res.body);
+      }, function metadataFetchedError (err) {
+        console.error('Error fetching', githubUrl);
+        reject();
+      });
+  });
+
+  function addToken (url) {
+    return Url(url).q({access_token: config.githubAccessToken}).url;
+  }
+}
+
+/**
+ * Try to infer GitHub repository from npm repository field.
+ *
+ * @param {string} repository - npm repository field.
+ */
+function inferGithubRepository (repository) {
+  if (!repository) { return; }
+
+  if (repository.constructor === String) {
+    // GitHub slug (e.g., `aframevr/aframe`).
+    if (repository.indexOf('http') === -1 && repository.indexOf('/') !== -1) {
+      return repository;
+    }
+    // GitHub URL (e.g., `https://github.com/aframevr/aframe).
+    if (repository.indexOf('github.com') !== -1) {
+      return githubUrl.split('/').slice(-2).join('/');
+    }
+  } else if (repository.url) {
+    // GitHub URL (e.g., `git+https://github.com/aframevr/aframe.git).
+    return repository.url.replace(/.git$/, '').split('/').slice(-2).join('/');
+  }
+}

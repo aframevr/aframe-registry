@@ -14,6 +14,7 @@
     "nunjucks": "^2.5.2",
     "superagent": "^2.3.0",
     "superagent-promise": "^1.1.0",
-    "url-join": "^1.1.0"
+    "url-join": "^1.1.0",
+    "urlgray": "^0.2.3"
   }
 }
