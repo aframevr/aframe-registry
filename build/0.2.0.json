@@ -5,12 +5,36 @@
       "description": "Text component for A-Frame VR.",
       "file": "https://unpkg.com/aframe-text-component@0.1.x/dist/aframe-text-component.min.js",
       "githubCreated": "2015-12-18T23:07:33Z",
-      "githubUpdated": "2016-09-19T19:34:26Z",
+      "githubUpdated": "2016-09-30T05:50:37Z",
       "githubUrl": "https://github.com/ngokevin/aframe-text-component",
-      "githubStars": 45,
+      "githubStars": 46,
       "homepage": "https://github.com/ngokevin/aframe-text-component#readme",
       "license": "MIT",
       "name": "text"
+    },
+    "aframe-bmfont-text-component": {
+      "author": "Ben Pyrik <ben@wsundine.com>",
+      "description": "BMFont Text component for A-Frame.",
+      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
+      "githubCreated": "2016-06-21T20:13:52Z",
+      "githubUpdated": "2016-09-28T21:37:00Z",
+      "githubUrl": "https://github.com/bryik/aframe-bmfont-text-component",
+      "githubStars": 22,
+      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
+      "license": "MIT",
+      "name": "bmfont-text"
+    },
+    "aframe-particle-system-component": {
+      "author": "IdeaSpace <info@ideaspacevr.org> (https://www.ideaspacevr.org)",
+      "description": "Particle systems for A-Frame.",
+      "file": "https://unpkg.com/aframe-particle-system-component@^1.0.2/dist/aframe-particle-system-component.min.js",
+      "githubCreated": "2016-05-29T03:58:16Z",
+      "githubUpdated": "2016-09-30T20:49:51Z",
+      "githubUrl": "https://github.com/IdeaSpaceVR/aframe-particle-system-component",
+      "githubStars": 16,
+      "homepage": "https://github.com/IdeaSpaceVR/aframe-particle-system-component#readme",
+      "license": "MIT",
+      "name": "particle-system"
     },
     "aframe-stereo-component": {
       "author": "Óscar Marín Miró <oscar@outliers.es> @oscarmarinmiro",
@@ -23,18 +47,6 @@
       "homepage": "https://github.com/oscarmarinmiro/aframe-stereo-component#readme",
       "license": "MIT",
       "name": "stereo"
-    },
-    "aframe-bmfont-text-component": {
-      "author": "Ben Pyrik <ben@wsundine.com>",
-      "description": "BMFont Text component for A-Frame.",
-      "file": "https://unpkg.com/aframe-bmfont-text-component@0.1.x/dist/aframe-bmfont-text-component.min.js",
-      "githubCreated": "2016-06-21T20:13:52Z",
-      "githubUpdated": "2016-09-20T04:22:00Z",
-      "githubUrl": "https://github.com/bryik/aframe-bmfont-text-component",
-      "githubStars": 21,
-      "homepage": "https://github.com/bryik/aframe-bmfont-text-component#readme",
-      "license": "MIT",
-      "name": "bmfont-text"
     }
   }
 }
