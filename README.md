@@ -8,7 +8,8 @@ Curated collection of community A-Frame components.
 
 ## How It Works
 
-A single registry file is maintained at `registry.yml`. The format of a component looks like:
+A single registry file is maintained at `registry.yml`. The format of a
+component looks like:
 
 ```yml
 <npm package name>:
@@ -55,3 +56,6 @@ npm run build
 
 - Keep the components in alphabetical order.
 - The component build should self-register the component with `AFRAME.registerComponent`.
+- The component should be published to [GitHub](https://github.com).
+- The component should be published to [npm](https://npmjs.com) to integrate with [unpkg](https://unpkg.com).
+- Try to follow [semver](http://semver.org/) in your component versioning scheme.
