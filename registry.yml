@@ -21,16 +21,6 @@ components:
         version: 0.3.x
         path: dist/aframe-mountain-component.min.js
 
-  aframe-particle-system-component:
-    name: particle-system
-    versions:
-      0.2.0:
-        version: ^1.0.2
-        path: dist/aframe-particle-system-component.min.js
-      0.3.0:
-        version: ^1.0.2
-        path: dist/aframe-particle-system-component.min.js
-
   aframe-stereo-component:
     name: stereo
     versions:
@@ -47,3 +37,15 @@ components:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-text-component.min.js
+
+shaders:
+
+  aframe-sun-sky-shader:
+    name: sunSky
+    versions:
+      0.2.0:
+        version: ^3.0.1
+        path: dist/aframe-sun-sky.min.js
+      0.3.0:
+        version: ^3.0.1
+        path: dist/aframe-sun-sky.min.js

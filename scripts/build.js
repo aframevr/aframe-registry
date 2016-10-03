@@ -1,18 +1,39 @@
+/*
+  Component Steps:
+    For each component:
+      For each A-Frame version:
+        Check if version is explicitly incompatible
+        Check if version can fall back to old version, use its metadata
+        Fetch metadata
+          NPM
+          GitHub
+          README (hosted on unpkg)
+  Write to JSON
+*/
+var cheerio = require('cheerio');
 var deepExtend = require('deep-extend');
 var fs = require('fs');
 var glob = require('glob');
+var markdown = require('marked');
+var moment = require('moment');
 var path = require('path');
-var req = require('superagent-promise')(require('superagent'), Promise);
+var req = require('superagent-promise')(require('superagent'), require('bluebird'));
 var Url = require('urlgray');
 var urlJoin = require('url-join');
 var yaml = require('js-yaml');
 
 var config = require('./config');
 
-var CDN = 'https://unpkg.com/';
+/**
+ * Promise catcher.
+ */
+function handleError (err) {
+  console.log(err.stack);
+};
 
 // Major versions.
 var AFRAME_VERSIONS = ['0.2.0', '0.3.0'];
+var CDN = 'https://unpkg.com/';
 
 // The output object, keyed by A-Frame versions.
 var OUTPUT = {};
@@ -32,11 +53,12 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
   // Go through each A-Frame version and build component metadata for that version.
   // Need to memoize the promises since newer versions of components may be falling back
   // on older versions of components, which require that they have been processed.
-  var componentsProcessed = [];
+  var aframeVersionPromises = [];
   AFRAME_VERSIONS.forEach(function pushPromise (aframeVersion, index) {
-    componentsProcessed.push(processVersion(aframeVersion, index));
+    var promise = processVersion(aframeVersion, index);
+    aframeVersionPromises.push(promise);
   });
-  return Promise.all(componentsProcessed);
+  return Promise.all(aframeVersionPromises);
 
   function processVersion (aframeVersion, index) {
     // Component marked as explicitly not compatible with this version of A-Frame.
@@ -49,9 +71,9 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
     // No component version registered for this version of A-Frame. Walk backwards.
     // Cascading effect.
     if (!component.versions[aframeVersion]) {
-      if (index === 0) { return; }  // No previous version.
+      if (index === 0) { return Promise.resolve(); }  // No previous version.
 
-      return componentsProcessed[index - 1].then(function fallback () {
+      return aframeVersionPromises[index - 1].then(function fallback () {
         var oldAFrameVersion = AFRAME_VERSIONS[index - 1];
 
         if (!OUTPUT[oldAFrameVersion].components[npmName]) { return; }
@@ -64,9 +86,12 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
       });
     }
 
-    return fetchMetadata(npmName, component, aframeVersion).then(function (metadata) {
-      OUTPUT[aframeVersion].components[npmName] = metadata;
-    }, console.error);
+    return new Promise(function (resolve, reject) {
+      fetchMetadata(npmName, component, aframeVersion).then(function (metadata) {
+        OUTPUT[aframeVersion].components[npmName] = metadata;
+        resolve();
+      }).catch(handleError);
+    });
   }
 });
 
@@ -74,15 +99,13 @@ var metadataFetched = componentNpmNames.map(function processComponent (npmName) 
 Promise.all(metadataFetched).then(function writeOutput () {
   console.log('Registry processed, writing files...');
   Object.keys(OUTPUT).forEach(function (aframeVersion) {
-    var output = JSON.stringify(OUTPUT[aframeVersion], null, '  ');
+    var output = JSON.stringify(OUTPUT[aframeVersion]);
     outputPath = path.join('build', aframeVersion + '.json');
     console.log('Writing', outputPath, '...');
     fs.writeFileSync(outputPath, output);
   });
   console.log('Processing complete!');
-}, function error (err) {
-  console.log(err);
-});
+}).catch(handleError);
 
 /**
  * Fetch metadata from npm and GitHub.
@@ -95,25 +118,38 @@ function fetchMetadata (npmName, component, aframeVersion) {
   var componentVersion = component.versions[aframeVersion].version;
   var packageRoot = urlJoin(CDN, npmName + '@' + componentVersion);
 
-  return new Promise(function (resolve) {
+  return new Promise(function (resolve, reject) {
     console.log('Fetching from npm', npmName, componentVersion, '...');
     fetchNpm(packageRoot).then(function (npmData) {
-      fetchGithub(npmData).then(function (githubData) {
+      var getGitHub = fetchGithub(npmData);
+      var getReadme = fetchReadme(packageRoot, component.versions[aframeVersion].image);
+      Promise.all([getGitHub, getReadme]).then(function (data) {
+        var githubData = data[0];
+        var readmeData = data[1];
+
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
         resolve({
-          author: npmData.author,
+          author: npmData.author.trim(),
+          authorName: npmData.author.split('<')[0].trim(),
           description: npmData.description,
           file: urlJoin(packageRoot, component.versions[aframeVersion].path),
+          filename: path.basename(component.versions[aframeVersion].path),
           githubCreated: githubData.created_at,
+          githubCreatedPretty: moment(githubData.created_at).format('MMMM Do YYYY'),
           githubUpdated: githubData.updated_at,
+          githubUpdatedPretty: moment(githubData.updated_at).format('MMMM Do YYYY'),
           githubUrl: githubData.html_url,
           githubStars: githubData.stargazers_count,
-          homepage: npmData.homepage,
+          image: (component.versions[aframeVersion].image ||
+                  parseImgFromText(readmeData.text, packageRoot)),
           license: npmData.license,
-          name: component.name
+          name: component.name,
+          npmUrl: urlJoin('https://npmjs/package/', npmName),
+          readmeExcerpt: getReadmeExcerpt(readmeData.text),
+          readmeUrl: readmeData.url
         });
-      }, console.error);
-    }, console.error);
+      }).catch(handleError);
+    }).catch(handleError);
   });
 }
 
@@ -131,10 +167,7 @@ function fetchNpm (packageRoot) {
       .get(packageJsonUrl)
       .then(function metadataFetchedSuccess (res) {
         resolve(res.body);
-      }, function metadataFetchedError (err) {
-        console.error('Error fetching', npmName, packageJsonUrl);
-        reject();
-      });
+      }).catch(handleError);
   });
 }
 
@@ -157,15 +190,29 @@ function fetchGithub (npmData) {
       .get(repoInfoUrl)
       .then(function metadataFetchedSuccess (res) {
         resolve(res.body);
-      }, function metadataFetchedError (err) {
-        console.error('Error fetching', githubUrl);
-        reject();
-      });
+      }).catch(handleError);
   });
 
   function addToken (url) {
     return Url(url).q({access_token: config.githubAccessToken}).url;
   }
+}
+
+/**
+ * Get README data by fetching from package root (via unpkg.com).
+ */
+function fetchReadme (packageRoot, image) {
+  var readmeUrl = urlJoin(packageRoot, 'README.md');
+  return new Promise(function (resolve, reject) {
+    req
+      .get(readmeUrl)
+      .then(function (res) {
+        resolve({
+          text: res.text,
+          url: readmeUrl
+        });
+      }).catch(handleError);
+  });
 }
 
 /**
@@ -189,4 +236,44 @@ function inferGithubRepository (repository) {
     // GitHub URL (e.g., `git+https://github.com/aframevr/aframe.git).
     return repository.url.replace(/.git$/, '').split('/').slice(-2).join('/');
   }
+}
+
+/**
+ * To parse image from README.
+ */
+var IMG_REGEX_HTML = /<\s*img\s*src="(.*?)".*?>/;
+var IMG_REGEX_MD = /\!\[.*\]\((.*?)\)/;
+function parseImgFromText (text, packageRoot) {
+  var image;
+
+  // Parse Markdown format.
+  image = IMG_REGEX_MD.exec(text);
+
+  // Parse HTML format.
+  if (!image) { image = IMG_REGEX_HTML.exec(text); }
+
+  // Couldn't find.
+  if (!image) { return ''; }
+
+  // Trim in case of weird formats like `![](/foo.png "Description")`.
+  image = image[1].split(' ')[0];
+
+  // Absolutify.
+  if (image.indexOf('http') !== 0) { image = urlJoin(packageRoot, image); }
+
+  return image;
+}
+
+/**
+ * Get excerpt from README. First parse to HTML, then trim to first N elements
+ * Exclude headers, images, and tables.
+ */
+function getReadmeExcerpt (text) {
+  var html = markdown(text);
+  var $ = cheerio.load(html);
+  var excerpt = $('p').slice(0, 6);
+  excerpt.find('h1').remove();
+  excerpt.find('img').remove();
+  excerpt.find('script').remove();
+  return excerpt.toString();
 }

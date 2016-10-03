@@ -2,17 +2,24 @@
   "name": "aframe-registry",
   "version": "0.1.0",
   "description": "Curated collection of community A-Frame components.",
-  "main": "build/0.3.x.json",
+  "main": "build/0.3.0.json",
   "scripts": {
     "build": "node scripts/build.js",
-    "site": "node scripts/site.js",
-    "postinstall": "shx cp -n scripts/templates/config.local.js scripts"
+    "print": "prettyjson build/0.3.0.json",
+    "site": "node site/generate.js",
+    "postinstall": "shx cp -n scripts/templates/config.local.js scripts",
+    "serve": "http-server -p 7979"
   },
   "devDependencies": {
+    "bluebird": "^3.4.6",
+    "cheerio": "^0.22.0",
     "deep-extend": "^0.4.1",
     "glob": "^7.1.0",
     "js-yaml": "^3.6.1",
+    "marked": "^0.3.6",
+    "moment": "^2.15.1",
     "nunjucks": "^2.5.2",
+    "prettyjson": "^1.1.3",
     "shx": "^0.1.4",
     "superagent": "^2.3.0",
     "superagent-promise": "^1.1.0",

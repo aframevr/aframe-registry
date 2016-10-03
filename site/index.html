@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A-Frame Registry</title>
+    <meta name="description" content="Curated collection of community A-Frame components, shaders, and assets."></meta>
+    <meta name="og:image" content="https://aframe.io/images/aframe-logo.png"></meta>
+    <link rel="icon" sizes="192x192" href="https://aframe.io/images/aframe-logo-192.png"></link>
+    <link rel="stylesheet" type="text/css" href="site/index.css"></link>
+  </head>
+  <body>
+    <h1>A-Frame Registry</h1>
+
+    <p>Curated collection of A-Frame components, shaders, and assets.</p>
+
+    <h2>Components</h2>
+
+    <ul id="components">
+      {% for componentName in componentNames -%}
+        {% set component = components[componentName] %}
+        <li class="component">
+          <div class="component__image" style="background-image: url({{ component.image }})"></div>
+          <div class="component__infowrapper">
+            <h1 class="component__title">{{ component.name }}</h1>
+
+            <div class="component__metadata">
+              <span class="component__author">&commat; {{ component.authorName }}</span>
+              <span class="component__githubcreated">&uarr; {{ component.githubCreatedPretty }}</span>
+              <span class="component__license">&copy; {{ component.license }}</span>
+              <span class="component__stars">&#9733; {{ component.githubStars }}</span>
+            </div>
+
+            <p class="component__description">{{ component.description }}</p>
+
+            <a class="component__download" href="{{ component.file }}">
+              &darr; <i>{{ component.filename }}</i>
+            </a>
+          </div>
+
+          {% include "github-corner-component.html" %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <!-- GitHub Corner. -->
+    {% include "github-corner.html" %}
+  </body>
+</html>
