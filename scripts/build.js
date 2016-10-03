@@ -15,6 +15,7 @@ var deepExtend = require('deep-extend');
 var fs = require('fs');
 var glob = require('glob');
 var markdown = require('marked');
+var moment = require('moment');
 var path = require('path');
 var req = require('superagent-promise')(require('superagent'), require('bluebird'));
 var Url = require('urlgray');
@@ -128,11 +129,15 @@ function fetchMetadata (npmName, component, aframeVersion) {
 
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
         resolve({
-          author: npmData.author,
+          author: npmData.author.trim(),
+          authorName: npmData.author.split('<')[0].trim(),
           description: npmData.description,
           file: urlJoin(packageRoot, component.versions[aframeVersion].path),
+          filename: path.basename(component.versions[aframeVersion].path),
           githubCreated: githubData.created_at,
+          githubCreatedPretty: moment(githubData.created_at).format('MMMM Do YYYY'),
           githubUpdated: githubData.updated_at,
+          githubUpdatedPretty: moment(githubData.updated_at).format('MMMM Do YYYY'),
           githubUrl: githubData.html_url,
           githubStars: githubData.stargazers_count,
           image: (component.versions[aframeVersion].image ||
