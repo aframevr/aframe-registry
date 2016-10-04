@@ -15,7 +15,7 @@ var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
 
-var fetchMetadata = require('./metadata.js').fetchMetadata;
+var getMetadata = require('./metadata.js').getMetadata;
 
 // Major versions.
 var AFRAME_VERSIONS = ['0.2.0', '0.3.0'];
@@ -43,41 +43,34 @@ function load (registryFilename) {
  * @param {object} REGISTRY - Complete registry object, pre-processed.
  * @returns {Promise} - Resolves complete registry object, processed.
  */
-function build (REGISTRY) {
+function build (REGISTRY, stubFetchers) {
   // The output object, keyed by A-Frame versions.
   var OUTPUT = {};
-  AFRAME_VERSIONS.forEach(function (version) {
-    OUTPUT[version] = {components: {}};
+
+  // Populate with A-Frame versions.
+  AFRAME_VERSIONS.forEach(function (aframeVersion) {
+    OUTPUT[aframeVersion] = {components: {}};
   });
 
-  // Fetch each component.
-  var componentNpmNames = Object.keys(REGISTRY.components);
-  var metadataFetched = componentNpmNames.map(function processComponent (npmName) {
+  // Process each component.
+  var metadataFetched = Object.keys(REGISTRY.components).map(function process (npmName) {
+    var aframeVersionPromises = [];
     var component = REGISTRY.components[npmName];
     component.npmName = npmName;
 
-    // Go through each A-Frame version and build component metadata for that version.
-    // Need to memoize the promises since newer versions of components may be falling back
-    // on older versions of components, which require that they have been processed.
-    var aframeVersionPromises = [];
+    // Need to push promises one at a time so they can be referenced in case a component
+    // is falling back to the previous version.
     AFRAME_VERSIONS.forEach(function pushPromise (aframeVersion, index) {
-      // Resolve version.
-      var resolved = processVersion(
-        OUTPUT[aframeVersion].components, component, aframeVersion,
-        AFRAME_VERSIONS[index - 1], aframeVersionPromises[index - 1]);
-
-      if (resolved) {
-        aframeVersionPromises.push(Promise.resolve());
-        return;
-      }
-
-      // If not resolved, must fetch.
-      aframeVersionPromises.push(
-        fetchMetadata(npmName, component, aframeVersion).then(function (metadata) {
-          OUTPUT[aframeVersion].components[npmName] = metadata;
-        }, handleError)
-      );
+      var resolvePromise = resolveData(component, aframeVersion, AFRAME_VERSIONS[index - 1],
+                                       aframeVersionPromises[index - 1], stubFetchers);
+      resolvePromise.then(function (componentVersionData) {
+        if (!componentVersionData) { return; }
+        // Set to output.
+        OUTPUT[aframeVersion].components[npmName] = componentVersionData;
+      });
+      aframeVersionPromises.push(resolvePromise);
     });
+
     return Promise.all(aframeVersionPromises);
   });
 
@@ -92,38 +85,44 @@ function build (REGISTRY) {
  * Decide which version of the module should be linked to `aframeVersion`.
  * Generalized for components and shaders.
  *
- * @param {object} versionOutput - e.g., `registry['0.3.0'].components`.
  * @param {object} aModule - Component, shader, etc., that follows same metadata structure.
  * @param {string} aframeVersion - A-Frame major version (e.g., `0.3.0`).
  * @param {number} prevAframeVersion - Previous A-Frame major version (e.g., `0.2.0`).
  * @param {array} aframeVersionPromises - List of promises to process component.
- * @returns {boolean} - `true` if the version is processed, false if need to `fetch` metadata.
+ * @returns {Promise} - Resolve `null` if nothing to output, else data object.
  */
-function processVersion (versionOutput, aModule, aframeVersion, prevAframeVersion,
-                         prevAframeVersionPromise) {
-  // Module marked as explicitly not compatible with this version of A-Frame.
-  if (aModule.versions[aframeVersion] && aModule.versions[aframeVersion] === null) {
-    console.log(aModule.npmName, 'marked not compatible with', aframeVersion);
-    return true;
+function resolveData (aModule, aframeVersion, prevAframeVersion, prevAframeVersionPromise,
+                      stubFetchers) {
+  var npmName = aModule.npmName;
+
+  // Explicitly not compatible for this version of A-Frame.
+  if (aframeVersion in aModule.versions && aModule.versions[aframeVersion] === null) {
+    console.log(npmName, 'marked not compatible with', aframeVersion);
+    return Promise.resolve(null);
   }
 
-  // No module version registered for this version of A-Frame. Walk backwards.
-  if (!aModule.versions[aframeVersion]) {
-    if (!prevAframeVersion) { return true; }  // No previous version.
+  // Explicit version listed for this version of A-Frame. Fetch metadata.
+  if (aModule.versions[aframeVersion]) {
+    return getMetadata(npmName, aModule, aframeVersion, stubFetchers);
+  }
 
-    prevAframeVersionPromise.then(function fallback () {
-      if (!versionOutput[aModule.npmName]) { return; }
+  // Nothing listed for the previous version of A-Frame.
+  if (!prevAframeVersionPromise) {
+    return Promise.resolve(null);
+  }
 
-      console.log(aModule.npmName, 'marked to fall back to', prevAframeVersion, 'entry for',
+  // Walk back to previous version of A-Frame. This can chain back more than one version.
+  return new Promise(function (resolve) {
+    prevAframeVersionPromise.then(function fallback (metadata) {
+      if (!metadata) { resolve(null); }
+
+      console.log(npmName, 'marked to fall back to', prevAframeVersion, 'entry for',
                   aframeVersion);
-      var oldEntry = deepExtend({}, versionOutput[aModule.npmName]);
-      var aModule = versionOutput[aModule.npmName] = oldEntry;
-      aModule.fallbackVersion = prevAframeVersion;
-    }, handleError);
-    return true;
-  }
-
-  return false;
+      resolve(deepExtend({
+        fallbackVersion: prevAframeVersion
+      }, metadata));
+    });
+  }, handleError);
 }
 
 function write (processedRegistry) {

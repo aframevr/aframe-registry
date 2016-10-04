@@ -5,8 +5,7 @@
   "main": "build/0.3.0.json",
   "scripts": {
     "build": "node scripts/build.js",
-    "lint": "semistandard scripts/*.js",
-    "site": "node site/generate.js",
+    "lint": "semistandard scripts/*.js tests/*.js",
     "site": "node site/generate.js",
     "print": "prettyjson build/0.3.0.json",
     "postinstall": "shx cp -n scripts/templates/config.local.js scripts",
@@ -15,8 +14,10 @@
   },
   "devDependencies": {
     "bluebird": "^3.4.6",
+    "cheerio": "^0.22.0",
     "deep-extend": "^0.4.1",
     "js-yaml": "^3.6.1",
+    "marked": "^0.3.6",
     "mocha": "^3.1.0",
     "moment": "^2.15.1",
     "nunjucks": "^2.5.2",
@@ -24,7 +25,7 @@
     "semistandard": "^9.0.0",
     "shx": "^0.1.4",
     "sinon": "^1.17.6",
-    "superagent": "^2.3.0",
+    "superagent-mock": "^1.12.0",
     "superagent-promise": "^1.1.0",
     "url-join": "^1.1.0",
     "urlgray": "^0.2.3"
