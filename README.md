@@ -2,7 +2,7 @@
 
 > Work in progress.
 
-Curated collection of community A-Frame components.
+Curated collection of community A-Frame components, shaders, and assets.
 
 [VIEW SITE](https://aframevr.github.io/aframe-registry/)
 
@@ -42,8 +42,8 @@ determined in relation to A-Frame:
 
 ## Updating the Registry
 
-Add or update your component in only the `registry.yml` file (do not touch
-files in `build/`). Then make a pull request!
+Add or update your module in the `registry.yml` file (not the files in
+`build/`). Then make a pull request!
 
 To build the output registry JSON files that correspond to each A-Frame version:
 
@@ -52,10 +52,28 @@ npm install
 npm run build
 ```
 
+If you want to see the registry in a more readable format:
+
+```bash
+npm run print
+```
+
+## Local Development
+
+If updating the build scripts, make sure you have `npm install`ed. Then you can
+modify scripts and run `npm run test` to unit test or `npm run build` to do a
+full run.
+
+If updating the website, run `npm run site` to re-generate the templates. This
+doesn't need to be done if just working on CSS.
+
+Once deployed to master, the Registry's GitHub Pages will update.
+
 ## Guidelines
 
-- Keep the components in alphabetical order.
-- The component build should self-register the component with `AFRAME.registerComponent`.
-- The component should be published to [GitHub](https://github.com).
-- The component should be published to [npm](https://npmjs.com) to integrate with [unpkg](https://unpkg.com).
+- Keep the registry in alphabetical order.
+- Component builds should self-register themselves with `AFRAME.registerComponent`.
+- Components should be published to [GitHub](https://github.com).
+- Components should be published to [npm](https://npmjs.com).
+- Include a preview image or GIF in your README for display.
 - Try to follow [semver](http://semver.org/) in your component versioning scheme.
