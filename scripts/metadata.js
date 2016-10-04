@@ -49,7 +49,7 @@ function fetchMetadata (npmName, component, aframeVersion) {
                   parseImgFromText(readmeData.text, packageRoot)),
           license: npmData.license,
           name: component.name,
-          npmUrl: urlJoin(CDN, npmName),
+          npmUrl: urlJoin('https://npmjs.com/package/', npmName),
           readmeExcerpt: getReadmeExcerpt(readmeData.text),
           readmeUrl: readmeData.url
         });
