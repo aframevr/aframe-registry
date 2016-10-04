@@ -38,9 +38,9 @@ function load (registryFilename) {
 }
 
 /**
- * Process and fetch metadata for each component and version.
+ * Process and fetch metadata for each module and version.
  *
- * @param {object} REGISTRY - Complete registry object, pre-processed.
+ * @param {object} REGISTRY - Complete registry object, preprocessed.
  * @returns {Promise} - Resolves complete registry object, processed.
  */
 function build (REGISTRY, stubFetchers) {
@@ -48,34 +48,39 @@ function build (REGISTRY, stubFetchers) {
   var OUTPUT = {};
 
   // Populate with A-Frame versions.
-  AFRAME_VERSIONS.forEach(function (aframeVersion) {
-    OUTPUT[aframeVersion] = {components: {}};
+  AFRAME_VERSIONS.forEach(function populate (aframeVersion) {
+    OUTPUT[aframeVersion] = {
+      components: {},
+      shaders: {}
+    };
   });
 
-  // Process each component.
-  var metadataFetched = Object.keys(REGISTRY.components).map(function process (npmName) {
-    var aframeVersionPromises = [];
-    var component = REGISTRY.components[npmName];
-    component.npmName = npmName;
+  var promises = [];
+  ['components', 'shaders'].forEach(function processModules (type) {
+    // Process each module.
+    Object.keys(REGISTRY[type] || {}).forEach(function processModule (npmName) {
+      var aframeVersionPromises = [];
+      var aModule = REGISTRY[type][npmName];
+      aModule.npmName = npmName;
 
-    // Need to push promises one at a time so they can be referenced in case a component
-    // is falling back to the previous version.
-    AFRAME_VERSIONS.forEach(function pushPromise (aframeVersion, index) {
-      var resolvePromise = resolveData(component, aframeVersion, AFRAME_VERSIONS[index - 1],
-                                       aframeVersionPromises[index - 1], stubFetchers);
-      resolvePromise.then(function (componentVersionData) {
-        if (!componentVersionData) { return; }
-        // Set to output.
-        OUTPUT[aframeVersion].components[npmName] = componentVersionData;
+      // Need to push promises one at a time so they can be referenced in case a component
+      // is falling back to the previous version.
+      AFRAME_VERSIONS.forEach(function pushPromise (aframeVersion, index) {
+        var resolvePromise = resolveData(aModule, aframeVersion, AFRAME_VERSIONS[index - 1],
+                                         aframeVersionPromises[index - 1], stubFetchers);
+        resolvePromise.then(function (metadata) {
+          if (!metadata) { return; }
+          OUTPUT[aframeVersion][type][npmName] = metadata;
+        });
+        aframeVersionPromises.push(resolvePromise);
       });
-      aframeVersionPromises.push(resolvePromise);
-    });
 
-    return Promise.all(aframeVersionPromises);
+      promises.push(Promise.all(aframeVersionPromises));
+    });
   });
 
-  return new Promise(function (resolve) {
-    Promise.all(metadataFetched).then(function () {
+  return new Promise(function waitOnPromises (resolve) {
+    Promise.all(promises).then(function done () {
       resolve(OUTPUT);
     }).catch(handleError);
   }).catch(handleError);

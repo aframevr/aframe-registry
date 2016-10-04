@@ -32,6 +32,25 @@ function componentFactory (versions) {
 }
 
 /**
+ * Mock shader entry in registry.
+ *
+ * @param {object} versions - Specify default `test` shader versions.
+ * @returns {object}
+ */
+function shaderFactory (versions) {
+  return {
+    shaders: {
+      test: {
+        name: 'test',
+        versions: versions || {
+          '0.2.0': {path: 'dist/test.js', version: '1.2.3'}
+        }
+      }
+    }
+  };
+}
+
+/**
  * Mock XHR response bodies.
  *
  * @param {object} data - Extend default mock responses.
@@ -62,12 +81,21 @@ function fetcherFactory (data) {
 }
 
 describe('build', () => {
-  it('creates entries for each A-Frame major version', done => {
+  it('creates component entries for each A-Frame major version', done => {
     build({components: {}}).then(output => {
       assert.ok('0.2.0' in output);
       assert.ok('0.3.0' in output);
       assert.ok('components' in output['0.2.0']);
       assert.ok('components' in output['0.3.0']);
+    }).then(done, done);
+  });
+
+  it('creates shader entries for each A-Frame major version', done => {
+    build({components: {}}).then(output => {
+      assert.ok('0.2.0' in output);
+      assert.ok('0.3.0' in output);
+      assert.ok('shaders' in output['0.2.0']);
+      assert.ok('shaders' in output['0.3.0']);
     }).then(done, done);
   });
 
@@ -98,6 +126,36 @@ describe('build', () => {
       var components030 = output['0.3.0'].components;
       assert.ok('test' in components020);
       assert.ok(!('test' in components030));
+    }).then(done, done);
+  });
+
+  it('registers shader explicitly tied to an A-Frame version', done => {
+    build(shaderFactory() , fetcherFactory()).then(output => {
+      var shaders020 = output['0.2.0'].shaders;
+      assert.ok('test' in shaders020);
+      assert.equal(shaders020.test.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
+    }).then(done, done);
+  });
+
+  it('registers shader using previous registered version data', done => {
+    build(shaderFactory(), fetcherFactory()).then(output => {
+      var shaders030 = output['0.3.0'].shaders;
+      assert.ok('test' in shaders030);
+      assert.equal(shaders030.test.fallbackVersion, '0.2.0');
+      assert.equal(shaders030.test.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
+    }).then(done, done);
+  });
+
+  it('does not register shader explicitly marked as incompatible', done => {
+    var input = shaderFactory({
+      '0.2.0': {path: 'dist/test.js', version: '1.2.3'},
+      '0.3.0': null
+    });
+    build(input, fetcherFactory()).then(output => {
+      var shaders020 = output['0.2.0'].shaders;
+      var shaders030 = output['0.3.0'].shaders;
+      assert.ok('test' in shaders020);
+      assert.ok(!('test' in shaders030));
     }).then(done, done);
   });
 });
