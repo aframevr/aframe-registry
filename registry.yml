@@ -40,7 +40,7 @@ components:
 
 shaders:
 
-  aframe-sun-sky-shader:
+  aframe-sun-sky:
     name: sunSky
     versions:
       0.2.0:
