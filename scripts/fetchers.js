@@ -2,6 +2,7 @@ var req = require('superagent-promise')(require('superagent'), require('bluebird
 var Url = require('urlgray');
 var urlJoin = require('url-join');
 
+var cache = require('./cache').cache;
 var config = require('./config');
 
 /**
@@ -13,10 +14,15 @@ var config = require('./config');
 function fetchNpm (packageRoot) {
   // Build npm URL from component version and path.
   var packageJsonUrl = urlJoin(packageRoot, 'package.json');
+
+  // Grab from cache.
+  if (cache[packageJsonUrl]) { return Promise.resolve(cache[packageJsonUrl]); }
+
   return new Promise(function (resolve, reject) {
     req
       .get(packageJsonUrl)
       .then(function metadataFetchedSuccess (res) {
+        cache[packageJsonUrl] = res.body;
         resolve(res.body);
       }).catch(handleError);
   });
@@ -53,14 +59,20 @@ function fetchGithub (repo) {
  */
 function fetchReadme (packageRoot) {
   var readmeUrl = urlJoin(packageRoot, 'README.md');
+
+  // Grab from cache.
+  if (cache[readmeUrl]) { return Promise.resolve(cache[readmeUrl]); }
+
   return new Promise(function (resolve, reject) {
     req
       .get(readmeUrl)
       .then(function (res) {
-        resolve({
+        var data = {
           text: res.text,
           url: readmeUrl
-        });
+        };
+        cache[readmeUrl] = data;
+        resolve(data);
       }).catch(handleError);
   });
 }
@@ -69,6 +81,7 @@ function fetchReadme (packageRoot) {
 function handleError (err) { console.log(err.stack); }
 
 module.exports = {
+  cache: cache,
   fetchGithub: fetchGithub,
   fetchNpm: fetchNpm,
   fetchReadme: fetchReadme

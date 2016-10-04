@@ -15,6 +15,7 @@ var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
 
+var writeCache = require('./cache').write;
 var getMetadata = require('./metadata.js').getMetadata;
 
 // Major versions.
@@ -139,6 +140,8 @@ function write (processedRegistry) {
     console.log('Writing', outputPath, '...');
     fs.writeFileSync(outputPath, output);
   });
+  console.log('Writing request cache...');
+  writeCache();
   console.log('Processing complete!');
 }
 

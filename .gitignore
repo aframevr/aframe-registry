@@ -4,5 +4,5 @@ examples/node_modules/
 gh-pages
 node_modules/
 npm-debug.log
-.registry-cache
+.registrycache
 scripts/config.local.js
