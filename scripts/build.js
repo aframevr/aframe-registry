@@ -12,10 +12,7 @@
 */
 var deepExtend = require('deep-extend');
 var fs = require('fs');
-var glob = require('glob');
 var path = require('path');
-var Url = require('urlgray');
-var urlJoin = require('url-join');
 var yaml = require('js-yaml');
 
 var fetchMetadata = require('./metadata.js').fetchMetadata;
@@ -38,7 +35,7 @@ function load (registryFilename) {
   // Load registry.
   console.log('Processing registry.yml...');
   return yaml.load(fs.readFileSync(registryFilename, 'utf-8'));
-};
+}
 
 /**
  * Process and fetch metadata for each component and version.
@@ -82,7 +79,6 @@ function build (REGISTRY) {
       );
     });
     return Promise.all(aframeVersionPromises);
-
   });
 
   return new Promise(function (resolve) {
@@ -90,7 +86,7 @@ function build (REGISTRY) {
       resolve(OUTPUT);
     }).catch(handleError);
   }).catch(handleError);
-};
+}
 
 /**
  * Decide which version of the module should be linked to `aframeVersion`.
@@ -100,14 +96,14 @@ function build (REGISTRY) {
  * @param {object} aModule - Component, shader, etc., that follows same metadata structure.
  * @param {string} aframeVersion - A-Frame major version (e.g., `0.3.0`).
  * @param {number} prevAframeVersion - Previous A-Frame major version (e.g., `0.2.0`).
- * @param {array} aframeVersionPromises
- * @returns {Promise} - Resolve if version is resolved, else reject to fetch metadata.
+ * @param {array} aframeVersionPromises - List of promises to process component.
+ * @returns {boolean} - `true` if the version is processed, false if need to `fetch` metadata.
  */
 function processVersion (versionOutput, aModule, aframeVersion, prevAframeVersion,
                          prevAframeVersionPromise) {
   // Module marked as explicitly not compatible with this version of A-Frame.
   if (aModule.versions[aframeVersion] && aModule.versions[aframeVersion] === null) {
-    console.log(npmName, 'marked not compatible with', aframeVersion);
+    console.log(aModule.npmName, 'marked not compatible with', aframeVersion);
     return true;
   }
 
@@ -118,11 +114,11 @@ function processVersion (versionOutput, aModule, aframeVersion, prevAframeVersio
     prevAframeVersionPromise.then(function fallback () {
       if (!versionOutput[aModule.npmName]) { return; }
 
-      console.log(npmName, 'marked to fall back to', prevAframeVersion, 'entry', 'for',
+      console.log(aModule.npmName, 'marked to fall back to', prevAframeVersion, 'entry for',
                   aframeVersion);
-      var oldEntry = deepExtend({} , versionOutput[npmName]);
-      var aModule = versionOutput[npmName] = oldEntry;
-      aModule.fallbackVersion = oldAFrameVersion;
+      var oldEntry = deepExtend({}, versionOutput[aModule.npmName]);
+      var aModule = versionOutput[aModule.npmName] = oldEntry;
+      aModule.fallbackVersion = prevAframeVersion;
     }, handleError);
     return true;
   }
@@ -135,7 +131,7 @@ function write (processedRegistry) {
   console.log('Registry processed, writing files...');
   Object.keys(processedRegistry).forEach(function (aframeVersion) {
     var output = JSON.stringify(processedRegistry[aframeVersion]);
-    outputPath = path.join('build', aframeVersion + '.json');
+    var outputPath = path.join('build', aframeVersion + '.json');
     console.log('Writing', outputPath, '...');
     fs.writeFileSync(outputPath, output);
   });
@@ -143,7 +139,7 @@ function write (processedRegistry) {
 }
 
 // Promise catcher.
-function handleError (err) { console.log(err.stack); };
+function handleError (err) { console.log(err.stack); }
 
 module.exports = {
   load: load,

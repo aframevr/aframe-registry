@@ -1,8 +1,6 @@
 /*
   Everything involving fetching metadata.
 */
-var cheerio = require('cheerio');
-var markdown = require('marked');
 var moment = require('moment');
 var path = require('path');
 var req = require('superagent-promise')(require('superagent'), require('bluebird'));
@@ -49,6 +47,7 @@ function fetchMetadata (npmName, component, aframeVersion) {
                   parseImgFromText(readmeData.text, packageRoot)),
           license: npmData.license,
           name: component.name,
+          npmName: component.npmName,
           npmUrl: urlJoin('https://npmjs.com/package/', npmName),
           readmeUrl: readmeData.url
         });
@@ -85,7 +84,7 @@ function fetchGithub (npmData) {
   var GITHUB_API = 'https://api.github.com/';
   var repo = inferGithubRepository(npmData.repository);
 
-  if (!repo) { return new Promise.resolve({}); }
+  if (!repo) { return Promise.resolve({}); }
 
   var repoInfoUrl = addToken(urlJoin(GITHUB_API, 'repos/', repo));
   return new Promise(function (resolve, reject) {
@@ -134,7 +133,7 @@ function inferGithubRepository (repository) {
     }
     // GitHub URL (e.g., `https://github.com/aframevr/aframe).
     if (repository.indexOf('github.com') !== -1) {
-      return githubUrl.split('/').slice(-2).join('/');
+      return repository.split('/').slice(-2).join('/');
     }
   } else if (repository.url) {
     // GitHub URL (e.g., `git+https://github.com/aframevr/aframe.git).
@@ -146,7 +145,7 @@ function inferGithubRepository (repository) {
  * To parse image from README.
  */
 var IMG_REGEX_HTML = /<\s*img\s*src="(.*?)".*?>/;
-var IMG_REGEX_MD = /\!\[.*\]\((.*?)\)/;
+var IMG_REGEX_MD = /!\[.*\]\((.*?)\)/;
 function parseImgFromText (text, packageRoot) {
   var image;
 
@@ -168,23 +167,9 @@ function parseImgFromText (text, packageRoot) {
   return image;
 }
 
-/**
- * Get excerpt from README. First parse to HTML, then trim to first N elements
- * Exclude headers, images, and tables.
- */
-function getReadmeExcerpt (text) {
-  var html = markdown(text);
-  var $ = cheerio.load(html);
-  var excerpt = $('p').slice(0, 6);
-  excerpt.find('h1').remove();
-  excerpt.find('img').remove();
-  excerpt.find('script').remove();
-  return excerpt.toString();
-}
-
 // Promise catcher.
-function handleError (err) { console.log(err.stack); };
+function handleError (err) { console.log(err.stack); }
 
 module.exports = {
   fetchMetadata: fetchMetadata
-}
+};
