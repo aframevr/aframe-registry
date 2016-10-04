@@ -100,7 +100,7 @@ describe('build', () => {
   });
 
   it('registers component explicitly tied to an A-Frame version', done => {
-    build(componentFactory() , fetcherFactory()).then(output => {
+    build(componentFactory(), fetcherFactory()).then(output => {
       var components020 = output['0.2.0'].components;
       assert.ok('test' in components020);
       assert.equal(components020.test.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
@@ -130,7 +130,7 @@ describe('build', () => {
   });
 
   it('registers shader explicitly tied to an A-Frame version', done => {
-    build(shaderFactory() , fetcherFactory()).then(output => {
+    build(shaderFactory(), fetcherFactory()).then(output => {
       var shaders020 = output['0.2.0'].shaders;
       assert.ok('test' in shaders020);
       assert.equal(shaders020.test.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
