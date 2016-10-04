@@ -50,7 +50,6 @@ function fetchMetadata (npmName, component, aframeVersion) {
           license: npmData.license,
           name: component.name,
           npmUrl: urlJoin('https://npmjs.com/package/', npmName),
-          readmeExcerpt: getReadmeExcerpt(readmeData.text),
           readmeUrl: readmeData.url
         });
       }).catch(handleError);
