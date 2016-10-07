@@ -18,11 +18,11 @@ var CDN = config.CDN;
  * @param {object} versions - Specify default `test` component versions.
  * @returns {object}
  */
-function componentFactory (versions) {
+function componentFactory (versions, names) {
   return {
     components: {
       test: {
-        name: 'test',
+        names: names || 'test',
         versions: versions || {
           '0.2.0': {path: 'dist/test.js', version: '1.2.3'}
         }
@@ -41,7 +41,7 @@ function shaderFactory (versions) {
   return {
     shaders: {
       test: {
-        name: 'test',
+        names: 'test',
         versions: versions || {
           '0.2.0': {path: 'dist/test.js', version: '1.2.3'}
         }
@@ -172,7 +172,18 @@ describe('metadata (base)', () => {
   it('gets name', done => {
     build(componentFactory(), fetcherFactory()).then(output => {
       var component = output['0.2.0'].components.test;
-      assert.equal(component.name, 'test');
+      assert.equal(component.names.length, 1);
+      assert.equal(component.names[0], 'test');
+    }).then(done, done);
+  });
+
+  it('gets name for component group', done => {
+    build(componentFactory(undefined, ['a', 'b', 'c']), fetcherFactory()).then(output => {
+      var component = output['0.2.0'].components.test;
+      assert.equal(component.names.length, 3);
+      assert.equal(component.names[0], 'a');
+      assert.equal(component.names[1], 'b');
+      assert.equal(component.names[2], 'c');
     }).then(done, done);
   });
 

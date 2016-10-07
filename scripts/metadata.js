@@ -45,9 +45,10 @@ function getMetadata (npmName, component, aframeVersion, stubFetchers) {
           githubUrl: githubData.html_url,
           githubStars: githubData.stargazers_count,
           image: (componentVersionInfo.image ||
-                  parseImgFromText(readmeData.text, packageRoot)),
+                  parseImgFromText(readmeData.text, packageRoot) ||
+                  config.placeholderImage),
           license: npmData.license,
-          name: component.name,
+          names: component.names.constructor === String ? [component.names] : component.names,
           npmName: component.npmName,
           npmUrl: urlJoin('https://npmjs.com/package/', npmName),
           readmeUrl: readmeData.url,
@@ -85,8 +86,14 @@ function inferGithubRepo (npmData) {
  * To parse image from README.
  */
 function parseImgFromText (text, packageRoot) {
-  var img = cheerio.load(marked(text))('img').get(0);
+  var img;
   var src;
+
+  // Select image. Ignore badges.
+  img = cheerio.load(marked(text))('img').filter(function (i, elem) {
+    return elem.attribs.src.indexOf('shields.io') === -1 &&
+           elem.attribs.src.indexOf('travis-ci.org') === -1;
+  }).get(0);
 
   if (!img) { return ''; }
   src = img.attribs.src;

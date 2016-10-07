@@ -1,35 +1,42 @@
 components:
 
   aframe-animation-component:
-    name: animation
+    names: animation
     versions:
       0.3.0:
         version: ^3.0.1
         path: dist/aframe-animation-component.min.js
 
   aframe-bmfont-text-component:
-    name: bmfont-text
+    names: bmfont-text
     versions:
       0.2.0:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
   aframe-mountain-component:
-    name: mountain
+    names: mountain
     versions:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-mountain-component.min.js
 
   aframe-stereo-component:
-    name: stereo
+    names: stereo
     versions:
       0.2.0:
         version: 0.2.x
         path: dist/aframe-stereo-component.min.js
 
+  aframe-testras:
+    names: [dynamic-body, static-body]
+    versions:
+      0.3.0:
+        version: ^2.5.3
+        path: dist/aframe-extras.physics.min.js
+
   aframe-text-component:
-    name: text
+    names: text
     versions:
       0.2.0:
         version: 0.1.x
@@ -41,7 +48,7 @@ components:
 shaders:
 
   aframe-sun-sky:
-    name: sunSky
+    names: sunSky
     versions:
       0.2.0:
         version: ^3.0.1
