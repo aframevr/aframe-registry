@@ -15,7 +15,7 @@ component looks like:
 
 ```yml
 <npm package name>:
-  name: <component name as used from HTML>
+  names: [<component names (as used from HTML) included>]
   versions:
     <aframe major version series>:
       version: <npm package version>

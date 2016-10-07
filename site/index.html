@@ -20,7 +20,9 @@
         <li class="component">
           <div class="component__image" style="background-image: url({{ component.image }})"></div>
           <div class="component__infowrapper">
-            <h1 class="component__title">{{ component.name }}</h1>
+            <h1 class="component__title">
+              <a href="{{ component.npmUrl }}">{{ component.npmName }}</a>
+            </h1>
 
             <div class="component__metadata">
               <span class="component__author">&commat; {{ component.authorName }}</span>
