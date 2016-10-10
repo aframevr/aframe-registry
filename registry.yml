@@ -14,6 +14,13 @@ components:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
+  aframe-extras:
+    names: [dynamic-body, static-body]
+    versions:
+      0.3.0:
+        version: ^2.5.4
+        path: dist/aframe-extras.physics.min.js
+
   aframe-mountain-component:
     names: mountain
     versions:
@@ -27,13 +34,6 @@ components:
       0.2.0:
         version: 0.2.x
         path: dist/aframe-stereo-component.min.js
-
-  aframe-testras:
-    names: [dynamic-body, static-body]
-    versions:
-      0.3.0:
-        version: ^2.5.3
-        path: dist/aframe-extras.physics.min.js
 
   aframe-text-component:
     names: text
