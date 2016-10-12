@@ -14,12 +14,12 @@ components:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
-  aframe-extras:
+  aframe-physics-system:
     names: [dynamic-body, static-body]
     versions:
       0.3.0:
-        version: ^2.5.4
-        path: dist/aframe-extras.physics.min.js
+        version: ^1.0.1
+        path: dist/aframe-physics-system.min.js
 
   aframe-mountain-component:
     names: mountain
