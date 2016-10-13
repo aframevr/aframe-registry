@@ -51,7 +51,7 @@ To build the output registry JSON files that correspond to each A-Frame version:
 
 ```bash
 npm install
-cp scripts/templates/config.local.js scripts  # Then need to add GitHub API token.
+npm run config  # Local config. You will need to add your GitHub API token.
 npm run build
 ```
 
