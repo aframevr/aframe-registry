@@ -1,6 +1,6 @@
 {
   "name": "aframe-registry",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Curated collection of community A-Frame components.",
   "main": "index.js",
   "scripts": {
@@ -27,5 +27,8 @@
     "superagent-promise": "^1.1.0",
     "url-join": "^1.1.0",
     "urlgray": "^0.2.3"
+  },
+  "dependencies": {
+    "require-dir": "^0.3.1"
   }
 }
