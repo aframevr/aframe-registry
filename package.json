@@ -10,7 +10,8 @@
     "site": "node site/generate.js",
     "print": "prettyjson build/0.3.0.json",
     "serve": "http-server -p 7979",
-    "test": "mocha --harmony --harmony-proxies tests"
+    "test": "mocha --harmony --harmony-proxies tests",
+    "test:ci": "npm run config && npm run test"
   },
   "devDependencies": {
     "bluebird": "^3.4.6",
