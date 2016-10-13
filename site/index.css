@@ -1,13 +1,20 @@
 html {
-  background: #2B2B2B;
-  color: #FAFAFA;
-  font-family: monospace;
+  background: #FAFAFA;
+  color: #222;
+  font-family: Fira Sans;
   font-size: 20px;
-  padding: 10px 20px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 a {
-  color: #1EAAF1;
+  color: #24CAFF;
   text-decoration: none;
   transition: all .1s;
 }
@@ -18,7 +25,7 @@ a:hover {
 
 h1 a,
 h1 a:hover {
-  color: #FAFAFA;
+  color: #222;
 }
 
 h1,
@@ -31,17 +38,60 @@ ul {
   padding: 0;
 }
 
+header {
+  align-items: center;
+  background: #EF2D5E;
+  color: #FFF;
+  display: flex;
+  height: 50px;
+  padding: 5px 20px;
+}
+
+header img {
+  margin-right: 20px;
+  max-height : 80%;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.hero {
+  align-items: center;
+  background-position: center center;
+  background-size: fill;
+  flex-direction: column;
+  display: flex;
+  height: 50%;
+  justify-content: center;
+}
+
+.hero > * {
+  background: rgba(50, 50, 50, 0.8);
+  color: #FAFAFA;
+  padding: 20px 40px;
+}
+
+.hero a {
+  border-bottom: 1px solid #FAFAFA;
+  color: #FAFAFA;
+}
+
 #components {
   display: flex;
   flex-direction: column;
 }
 
 .component {
-  background: #323232;
-  box-shadow: 0 2px 1px #212121;
+  border-top: 1px solid #DADADA;
+  box-shadow: 0 2px 2px #888;
   display: flex;
   margin: 10px 0;
-  padding: 20px;
+  padding: 15px;
   position: relative;
 }
 
@@ -65,11 +115,11 @@ ul {
 }
 
 .component__description {
-  color: #919191;
+  color: #222;
 }
 
 .component__metadata {
-  color: #919191;
+  color: #222;
   font-size: 16px;
 }
 
@@ -83,4 +133,8 @@ ul {
   display: inline-block;
   position: relative;
   left: 7px;
+}
+
+.component__download {
+  font-family: Fira Mono;
 }
