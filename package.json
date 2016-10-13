@@ -2,7 +2,7 @@
   "name": "aframe-registry",
   "version": "0.1.0",
   "description": "Curated collection of community A-Frame components.",
-  "main": "build/0.3.0.json",
+  "main": "index.js",
   "scripts": {
     "build": "node scripts/build.js",
     "lint": "semistandard scripts/*.js tests/*.js",
