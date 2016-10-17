@@ -14,19 +14,26 @@ components:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
-  aframe-physics-system:
-    names: [dynamic-body, static-body]
-    versions:
-      0.3.0:
-        version: ^1.0.1
-        path: dist/aframe-physics-system.min.js
-
   aframe-mountain-component:
     names: mountain
     versions:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-mountain-component.min.js
+
+  aframe-particle-system-component:
+    names: particle-system
+    versions:
+      0.3.0:
+        version: ^1.0.4
+        path: dist/aframe-particle-system-component.min.js
+
+  aframe-physics-system:
+    names: [dynamic-body, static-body]
+    versions:
+      0.3.0:
+        version: ^1.0.1
+        path: dist/aframe-physics-system.min.js
 
   aframe-stereo-component:
     names: stereo
@@ -56,3 +63,8 @@ shaders:
       0.3.0:
         version: ^3.0.1
         path: dist/aframe-sun-sky.min.js
+
+assets:
+
+  mmmm-models:
+    - paths: collada/
