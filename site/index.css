@@ -14,13 +14,13 @@ body {
 }
 
 a {
-  color: #24CAFF;
+  color: #EF2D5E;
   text-decoration: none;
   transition: all .1s;
 }
 
 a:hover {
-  color: #2EBAFF;
+  color: #CF0D3E;
 }
 
 h1 a,
@@ -42,43 +42,88 @@ header {
   align-items: center;
   background: #EF2D5E;
   color: #FFF;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+  height: 100px;
   display: flex;
-  height: 50px;
-  padding: 5px 20px;
+  align-items: center;
+}
+
+header a {
+  font-weight: bold;
+  color: #FFF;
+  border-bottom: 1px solid #FFF;
+}
+
+header a:hover {
+  color: #FFF;
 }
 
 header img {
   margin-right: 20px;
-  max-height : 80%;
+  height: 40px;
+  width: 40px;
 }
 
 header h1 {
   font-size: 24px;
 }
 
+header h2 {
+  font-size: 14px;
+  text-align: right;
+  flex: 1 1 auto;
+  z-index: 100;
+}
+
+.toolbar {
+  background: #24caff;
+  color: #555;
+  font-size: 13px;
+  margin-bottom: 40px;
+}
+
+.toolbar a {
+  color: #555;
+}
+
+.toolbar input {
+  width: 100px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #555;
+  outline: none;
+  color: #555;
+  font-family: Fira Sans;
+  padding: 5px 1px;
+  font-size: 13px;
+}
+
+.toolbar input::-webkit-input-placeholder { color: #555; opacity: 1; }
+.toolbar input::-moz-placeholder { color: #555; opacity: 1; }
+.toolbar input:-moz-placeholder { color: #555; opacity: 1; }
+.toolbar input:-ms-input-placeholder { color: #555; opacity: 1; }
+.toolbar input::placeholder { color: #555; opacity: 1; }
+.toolbar input:placeholder-shown { color: #555; opacity: 1; }
+
+.toolbar img {
+  vertical-align: middle;
+}
+
+.toolbar .wrapper {
+  height: 56px;
+}
+
+.toolbar .wrapper > * {
+  padding: 0 100px 0 0;
+}
+
 .content {
-  padding: 20px;
-}
-
-.hero {
-  align-items: center;
-  background-position: center center;
-  background-size: fill;
-  flex-direction: column;
-  display: flex;
-  height: 50%;
-  justify-content: center;
-}
-
-.hero > * {
-  background: rgba(50, 50, 50, 0.8);
-  color: #FAFAFA;
-  padding: 20px 40px;
-}
-
-.hero a {
-  border-bottom: 1px solid #FAFAFA;
-  color: #FAFAFA;
+  width: 960px;
+  margin: 0 auto;
 }
 
 #components {
@@ -87,54 +132,100 @@ header h1 {
 }
 
 .component {
-  border-top: 1px solid #DADADA;
-  box-shadow: 0 2px 2px #888;
+  border-bottom: 1px solid #DADADA;
   display: flex;
-  margin: 10px 0;
-  padding: 15px;
+  padding: 40px 0;
   position: relative;
 }
 
 .component__image {
   background-size: cover;
-  height: 256px;
+  width: 160px;
+  height: 160px;
   margin-right: 20px;
-  width: 256px;
 }
 
 .component__infowrapper {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  flex: 1 1 auto;
 }
 
 .component__title {
-  font-size: 32px;
+  font-size: 22px;
   margin-bottom: 5px;
   margin-top: 0;
+  font-weight: 400;
 }
 
 .component__description {
-  color: #222;
+  color: #595959;
+  font: 12px Verdana, Arial, Fira Sans, sans-serif;
+  margin: 20px 0 30px 0;
 }
 
 .component__metadata {
-  color: #222;
-  font-size: 16px;
+  color: #04ace2;
+  font-size: 13px;
+  display: flex;
 }
 
 .component__metadata span {
-  margin-right: 5px;
+  margin-right: 27px;
 }
 
-.component__metadata span:not(:last-child):after {
-  bottom: 3px;
-  content: '.';
-  display: inline-block;
+.component__metadata span:first-child {
+  font-size: 15px;
+  flex: 1 1 auto;
+}
+
+.component__metadata span:last-child {
+  margin: 0;
+}
+
+.component .starsymbol {
+  float: left;
   position: relative;
-  left: 7px;
+  top: -3px;
+  left: -3px;
+}
+
+.component .links {
+  display: flex;
 }
 
 .component__download {
-  font-family: Fira Mono;
+  font-size: 15px;
+  font-weight: 600;
+  margin-right: 40px;
+}
+
+.component__download img {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+@media (max-width: 960px) {
+  header, .toolbar, .content {
+    padding: 0 20px;
+    width: 99%;
+  }
+  .component__metadata {
+    padding-right: 30px;
+  } 
+  header h2{
+  }
+}
+
+@media (max-width: 500px) {
+  .component, .component__metadata, .component .links {
+    flex-direction: column;
+  }
+  .component__download, .component__image {
+    margin-bottom: 20px;
+  }
+  .toolbar .wrapper > * {
+    padding-right: 20px;
+  }
 }
