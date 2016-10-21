@@ -34,3 +34,4 @@ LICENSE text
 *.png binary
 *.wav binary
 *.woff2 binary
+*.ttf binary
