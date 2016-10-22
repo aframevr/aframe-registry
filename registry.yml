@@ -1,5 +1,12 @@
 components:
 
+  aframe-alongpath-component:
+    names: alongpath
+    versions:
+      0.3.0:
+        version: ^0.1.1
+        path: dist/aframe-alongpath-component.min.js
+
   aframe-animation-component:
     names: animation
     versions:
