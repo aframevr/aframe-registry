@@ -19,7 +19,7 @@ var writeCache = require('./cache').write;
 var getMetadata = require('./metadata.js').getMetadata;
 
 // Major versions.
-var AFRAME_VERSIONS = ['0.2.0', '0.3.0'];
+var AFRAME_VERSIONS = ['0.2.0', '0.3.0', '0.4.0'];
 
 // Main function.
 if (require.main === module) {
