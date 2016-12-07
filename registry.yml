@@ -73,5 +73,12 @@ shaders:
 
 assets:
 
-  mmmm-models:
-    - paths: collada/
+  models:
+    mmmm-models:
+      - paths: collada/
+
+  textures:
+    pixar128-library-jpg:
+      - paths: *
+      - license: Creative Commons Attribution 4.0 International License
+      - author: Pixar Animation Studios
