@@ -6,3 +6,4 @@ node_modules/
 npm-debug.log
 .registrycache
 scripts/config.local.js
+.DS_Store
