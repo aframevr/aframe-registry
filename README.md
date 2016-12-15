@@ -42,6 +42,19 @@ determined in relation to A-Frame:
 - If a component version for an A-Frame version is explicitly set to `null`,
   exclude it.
 
+### Excluding from the Inspector
+
+Components may be more optimal to use straight from code instead of from visual
+tools such as the Inspector. In such cases, specify `inspector: false`:
+
+aframe-codey-component:
+  names: codey
+  inspector: false
+  versions:
+    0.4.0:
+      version: 1.2.3
+      path: dist/aframe-codey-component.min.js
+
 ## Updating the Registry
 
 Add or update your module in the `registry.yml` file (not the files in

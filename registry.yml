@@ -42,6 +42,17 @@ components:
         version: ^3.0.x
         path: dist/aframe-extras.object-model.min.js
 
+  aframe-firebase-component:
+    names: firebase, firebase-broadcast
+    inspector: false
+    versions:
+      0.3.0:
+        version: ^3.0.0
+        path: dist/aframe-firebase-component.min.js
+      0.4.0:
+        version: ^3.0.0
+        path: dist/aframe-firebase-component.min.js
+
   aframe-mountain-component:
     names: mountain
     versions:
