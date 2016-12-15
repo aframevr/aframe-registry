@@ -21,27 +21,6 @@ components:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
-  aframe-extras.animation-mixer:
-    names: animation-mixer
-    versions:
-      0.3.0:
-        version: ^3.0.x
-        path: dist/aframe-extras.animation-mixer.min.js
-
-  aframe-extras.json-model:
-    names: json-model
-    versions:
-      0.3.0:
-        version: ^3.0.x
-        path: dist/aframe-extras.json-model.min.js
-
-  aframe-extras.object-model:
-    names: object-model
-    versions:
-      0.3.0:
-        version: ^3.0.x
-        path: dist/aframe-extras.object-model.min.js
-
   aframe-mountain-component:
     names: mountain
     versions:
@@ -69,6 +48,13 @@ components:
       0.2.0:
         version: 0.2.x
         path: dist/aframe-stereo-component.min.js
+
+  aframe-teleport-controls:
+    names: teleport-controls
+    versions:
+      0.4.0:
+        version: 0.1.x
+        path: dist/aframe-teleport-controls.min.js
 
   aframe-text-component:
     names: text

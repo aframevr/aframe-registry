@@ -1,10 +1,11 @@
 {
   "name": "aframe-registry",
   "version": "0.1.2",
+  "aframe_version": "0.4.0",
   "description": "Curated collection of community A-Frame components.",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && npm run site",
     "config": "shx cp -n scripts/templates/config.local.js scripts",
     "lint": "semistandard scripts/*.js tests/*.js",
     "site": "node site/generate.js",

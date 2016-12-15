@@ -3,7 +3,9 @@ var nunjucks = require('nunjucks');
 
 nunjucks.configure('site');
 
-var registry = JSON.parse(fs.readFileSync('./build/0.3.0.json', 'utf-8'));
+var aframeVersion = require('../package.json').aframe_version;
+
+var registry = JSON.parse(fs.readFileSync(`./build/${aframeVersion}.json`, 'utf-8'));
 registry.componentNames = Object.keys(registry.components).sort();
 
 var indexHtml = nunjucks.render('index.html', registry);
