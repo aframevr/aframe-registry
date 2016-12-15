@@ -87,9 +87,20 @@ Once deployed to master, the Registry's GitHub Pages will update.
 
 ## Guidelines
 
+### Component Requirements
+
+1. Must be published to [npm](https://npmjs.com).
+2. Must be published to [GitHub](https://github.com).
+3. Must self-register themselves with `AFRAME.registerComponent`.
+4. Must contain documentation on component properties and sample usage in the README.
+5. Must contain at least one example published to GitHub Pages.
+
+### Component Suggestions
+
+- Should include an attractive preview image or GIF in your README for display.
+- Should follow [semver](http://semver.org/) in your component versioning scheme, mirroring A-Frame's latest stable version.
+- Use [angle](https://www.npmjs.com/package/angle), an A-Frame command-line tool, to bootstrap a component template for publishing.
+
+### Registry Maintenance
+
 - Keep the registry in alphabetical order.
-- Component builds should self-register themselves with `AFRAME.registerComponent`.
-- Components should be published to [GitHub](https://github.com).
-- Components should be published to [npm](https://npmjs.com).
-- Include a preview image or GIF in your README for display.
-- Try to follow [semver](http://semver.org/) in your component versioning scheme.
