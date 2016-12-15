@@ -6,7 +6,7 @@ Curated collection of community A-Frame components, shaders, and assets.
 
 [VIEW SITE](https://aframevr.github.io/aframe-registry/)
 
-<img src="https://cloud.githubusercontent.com/assets/674727/19178879/5a499302-8c0c-11e6-9bc8-5e6a130cb82e.png" height="320">
+<img src="https://rawgit.com/aframevr/aframe-registry/master/scripts/placeholder.svg" height="320">
 
 ## How It Works
 
