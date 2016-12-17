@@ -47,6 +47,7 @@ determined in relation to A-Frame:
 Components may be more optimal to use straight from code instead of from visual
 tools such as the Inspector. In such cases, specify `inspector: false`:
 
+```
 aframe-codey-component:
   names: codey
   inspector: false
@@ -54,6 +55,7 @@ aframe-codey-component:
     0.4.0:
       version: 1.2.3
       path: dist/aframe-codey-component.min.js
+```
 
 ## Updating the Registry
 
