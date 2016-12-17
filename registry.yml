@@ -21,6 +21,16 @@ components:
         version: 0.1.x
         path: dist/aframe-bmfont-text-component.min.js
 
+  aframe-crawling-cursor:
+    names: crawling-cursor
+    versions:
+      0.3.0:
+        version: ^1.0.2
+        path: dist/aframe-crawling-cursor.min.js
+      0.4.0:
+        version: ^1.0.2
+        path: dist/aframe-crawling-cursor.min.js
+
   aframe-extras.animation-mixer:
     names: animation-mixer
     versions:
