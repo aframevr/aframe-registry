@@ -86,10 +86,6 @@ header h2 {
   margin-bottom: 40px;
 }
 
-.toolbar a {
-  color: #555;
-}
-
 .toolbar input {
   width: 100px;
   background: none;
@@ -119,6 +115,11 @@ header h2 {
 
 .toolbar .wrapper > * {
   padding: 0 100px 0 0;
+}
+
+.toolbar a {
+  color: #FAFAFA;
+  text-decoration: underline;
 }
 
 .content {
@@ -213,8 +214,6 @@ header h2 {
   }
   .component__metadata {
     padding-right: 30px;
-  } 
-  header h2{
   }
 }
 
