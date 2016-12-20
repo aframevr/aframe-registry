@@ -1,14 +1,12 @@
 # aframe-registry
 
-> Work in progress.
-
 Curated collection of community A-Frame components, shaders, and assets.
 
 [VIEW SITE](https://aframevr.github.io/aframe-registry/)
 
 <img src="https://rawgit.com/aframevr/aframe-registry/master/scripts/placeholder.svg" height="320">
 
-## How It Works
+## Introduction
 
 A single registry file is maintained at `registry.yml`. The format of a
 component looks like:
@@ -29,6 +27,8 @@ This registry will then be processed and output to JSON files, one for each
 major version of A-Frame. These JSON files will be consumed by tools,
 libraries, and websites such as the [A-Frame
 Inspector](https://github.com/aframevr/aframe-inspector).
+
+### Versioning
 
 Once A-Frame updates, all existing components will still work but are marked
 with a compatibility warning until either the component's entry in the registry
@@ -57,6 +57,25 @@ aframe-codey-component:
       path: dist/aframe-codey-component.min.js
 ```
 
+## Submitting a Component
+
+To submit a component, make a pull request adding your component to the
+registry file in the format explained above.
+
+### Component Requirements
+
+1. Must be published to [npm](https://npmjs.com).
+2. Must be published to [GitHub](https://github.com).
+3. Must self-register themselves with `AFRAME.registerComponent`.
+4. Must contain documentation on component properties and sample usage in the README.
+5. Must contain at least one example published to GitHub Pages.
+
+### Component Suggestions
+
+- Should include an attractive preview image or GIF in your README for display.
+- Should follow [semver](http://semver.org/) in your component versioning scheme, mirroring A-Frame's latest stable version.
+- Use [angle](https://www.npmjs.com/package/angle), an A-Frame command-line tool, to bootstrap a component template for publishing.
+
 ## Updating the Registry
 
 Add or update your module in the `registry.yml` file (not the files in
@@ -76,6 +95,8 @@ If you want to see the registry in a more readable format:
 npm run print
 ```
 
+Try to keep the registry in alphabetical order.
+
 ## Local Development
 
 If updating the build scripts, make sure you have `npm install`ed. Then you can
@@ -86,23 +107,3 @@ If updating the website, run `npm run site` to re-generate the templates. This
 doesn't need to be done if just working on CSS.
 
 Once deployed to master, the Registry's GitHub Pages will update.
-
-## Guidelines
-
-### Component Requirements
-
-1. Must be published to [npm](https://npmjs.com).
-2. Must be published to [GitHub](https://github.com).
-3. Must self-register themselves with `AFRAME.registerComponent`.
-4. Must contain documentation on component properties and sample usage in the README.
-5. Must contain at least one example published to GitHub Pages.
-
-### Component Suggestions
-
-- Should include an attractive preview image or GIF in your README for display.
-- Should follow [semver](http://semver.org/) in your component versioning scheme, mirroring A-Frame's latest stable version.
-- Use [angle](https://www.npmjs.com/package/angle), an A-Frame command-line tool, to bootstrap a component template for publishing.
-
-### Registry Maintenance
-
-- Keep the registry in alphabetical order.
