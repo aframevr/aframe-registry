@@ -63,6 +63,16 @@ components:
         version: ^3.0.0
         path: dist/aframe-firebase-component.min.js
 
+  aframe-layout-component:
+    names: layout
+    versions:
+      0.3.0:
+        version: 3.x.x
+        path: dist/aframe-layout-component.min.js
+      0.4.0:
+        version: 4.x.x
+        path: dist/aframe-layout-component.min.js
+
   aframe-mountain-component:
     names: mountain
     versions:
