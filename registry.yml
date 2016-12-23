@@ -91,7 +91,10 @@ components:
     names: [dynamic-body, static-body]
     versions:
       0.3.0:
-        version: ^1.0.1
+        version: ^1.0.x
+        path: dist/aframe-physics-system.min.js
+      0.4.0:
+        version: ^1.2.x
         path: dist/aframe-physics-system.min.js
 
   aframe-stereo-component:
