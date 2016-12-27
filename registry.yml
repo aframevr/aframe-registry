@@ -18,7 +18,7 @@ components:
     names: auto-detect-controllers
     versions:
       0.4.0:
-        version: ^0.1.0
+        version: ^0.1.1
         path: dist/aframe-auto-detect-controllers-component.min.js
 
   aframe-bmfont-text-component:
