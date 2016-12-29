@@ -101,7 +101,7 @@ components:
     names: stats-in-vr
     versions:
       0.4.0:
-        version: 0.1.3
+        version: 0.1.x
         path: dist/aframe-stats-in-vr-component.min.js
 
   aframe-stereo-component:
