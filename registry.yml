@@ -67,7 +67,7 @@ components:
     names: gearvr-controls
     versions:
       0.4.0:
-        version: ^0.1.2
+        version: 0.1.x
         path: dist/aframe-gearvr-controls-component.min.js
 
   aframe-layout-component:
