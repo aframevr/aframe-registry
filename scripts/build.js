@@ -15,6 +15,7 @@ var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');
 
+var config = require('./config');
 var writeCache = require('./cache').write;
 var getMetadata = require('./metadata.js').getMetadata;
 
@@ -23,6 +24,10 @@ var AFRAME_VERSIONS = ['0.2.0', '0.3.0', '0.4.0'];
 
 // Main function.
 if (require.main === module) {
+  if (!config.githubAccessToken) {
+    throw new Error('Github API token required. ' +
+                    'Set it via process.env.GITHUB_TOKEN or config.githubAccessToken.');
+  }
   var registry = load('registry.yml');
   build(registry).then(write);
 }
