@@ -10,6 +10,7 @@
     "lint": "semistandard scripts/*.js tests/*.js",
     "site": "node site/generate.js",
     "print": "prettyjson build/0.3.0.json",
+    "postinstall": "npm run config",
     "serve": "http-server -p 7979",
     "test": "mocha --harmony --harmony-proxies tests",
     "test:ci": "npm run config && npm run test"

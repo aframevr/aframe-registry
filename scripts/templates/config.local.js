@@ -1,3 +1,3 @@
 module.exports = {
-  githubAccessToken: ''
+  githubAccessToken: process.env.GITHUB_TOKEN || ''
 };
