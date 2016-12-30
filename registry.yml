@@ -63,6 +63,13 @@ components:
         version: ^3.0.0
         path: dist/aframe-firebase-component.min.js
 
+  aframe-gearvr-controls-component:
+    names: gearvr-controls
+    versions:
+      0.4.0:
+        version: 0.1.x
+        path: dist/aframe-gearvr-controls-component.min.js
+
   aframe-layout-component:
     names: layout
     versions:
