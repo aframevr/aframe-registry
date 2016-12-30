@@ -11,7 +11,7 @@ components:
     names: animation
     versions:
       0.3.0:
-        version: ^3.0.2
+        version: ^3.0.x
         path: dist/aframe-animation-component.min.js
 
   aframe-bmfont-text-component:
