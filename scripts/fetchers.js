@@ -50,6 +50,7 @@ function fetchGithub (repo) {
   });
 
   function addToken (url) {
+    console.log('ACCESS TOKEN', config.githubAccessToken);
     return Url(url).q({access_token: config.githubAccessToken}).url;
   }
 }
