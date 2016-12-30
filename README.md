@@ -107,3 +107,4 @@ If updating the website, run `npm run site` to re-generate the templates. This
 doesn't need to be done if just working on CSS.
 
 Once deployed to master, the Registry's GitHub Pages will update.
+
