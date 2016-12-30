@@ -1,5 +1,12 @@
 components:
 
+  aframe-deferred-renderer:
+    names: deferred-renderer
+    versions:
+      0.4.0:
+        version: ^1.0.0
+        path: build/aframe-deferred-renderer.min.js
+
   aframe-alongpath-component:
     names: alongpath
     versions:
