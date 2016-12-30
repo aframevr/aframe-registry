@@ -124,15 +124,15 @@ components:
         version: 0.4.x
         path: dist/aframe-text-component.min.js
 
-  aframe-voice-command-component:
-    names: voice-command
+  aframe-speech-command-component:
+    names: speech-command
     versions:
       0.3.0:
         version: 0.3.x
-        path: dist/aframe-voice-command-component.min.js
+        path: dist/aframe-speech-command-component.min.js
       0.4.0:
         version: 0.4.x
-        path: dist/aframe-voice-command-component.min.js
+        path: dist/aframe-speech-command-component.min.js
 
 shaders:
 
