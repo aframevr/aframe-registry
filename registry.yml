@@ -48,22 +48,22 @@ components:
   aframe-extras.animation-mixer:
     names: animation-mixer
     versions:
-      0.3.0:
-        version: ^3.0.x
+      0.4.0:
+        version: ^3.2.x
         path: dist/aframe-extras.animation-mixer.min.js
 
   aframe-extras.json-model:
     names: json-model
     versions:
-      0.3.0:
-        version: ^3.0.x
+      0.4.0:
+        version: ^3.2.x
         path: dist/aframe-extras.json-model.min.js
 
   aframe-extras.object-model:
     names: object-model
     versions:
-      0.3.0:
-        version: ^3.0.x
+      0.4.0:
+        version: ^3.2.x
         path: dist/aframe-extras.object-model.min.js
 
   aframe-firebase-component:
