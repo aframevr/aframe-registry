@@ -1,9 +1,9 @@
-var req = require('superagent-promise')(require('superagent'), require('bluebird'));
-var Url = require('urlgray');
-var urlJoin = require('url-join');
+const req = require('superagent-promise')(require('superagent'), require('bluebird'));
+const Url = require('urlgray');
+const urlJoin = require('url-join');
 
-var cache = require('./cache').cache;
-var config = require('./config');
+const cache = require('./cache').cache;
+const config = require('./config');
 
 /**
  * Fetch metadata from npm.
@@ -13,18 +13,21 @@ var config = require('./config');
  */
 function fetchNpm (packageRoot) {
   // Build npm URL from component version and path.
-  var packageJsonUrl = urlJoin(packageRoot, 'package.json');
+  const packageJsonUrl = urlJoin(packageRoot, 'package.json');
 
   // Grab from cache.
   if (cache[packageJsonUrl]) { return Promise.resolve(cache[packageJsonUrl]); }
 
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     req
       .get(packageJsonUrl)
       .then(function metadataFetchedSuccess (res) {
         cache[packageJsonUrl] = res.body;
         resolve(res.body);
-      }).catch(handleError);
+      }).catch(err => {
+        console.error(`Error fetching ${packageJsonUrl}`);
+        console.error(err.stack);
+      });
   });
 }
 
@@ -35,51 +38,69 @@ function fetchNpm (packageRoot) {
  * @returns {Promise}
  */
 function fetchGithub (repo) {
-  var GITHUB_API = 'https://api.github.com/';
+  const GITHUB_API = 'https://api.github.com/';
 
   if (!repo) { return Promise.resolve({}); }
 
-  var repoInfoUrl = addToken(urlJoin(GITHUB_API, 'repos/', repo));
-  return new Promise(function (resolve, reject) {
+  const repoInfoUrl = addToken(urlJoin(GITHUB_API, 'repos/', repo));
+  return new Promise((resolve, reject) => {
     console.log('Fetching from GitHub', repo, '...');
     req
       .get(repoInfoUrl)
       .then(function metadataFetchedSuccess (res) {
         resolve(res.body);
-      }).catch(handleError);
+      }).catch(err => {
+        console.error(`Error fetching ${repoInfoUrl}`);
+        console.error(err.stack);
+      });
   });
 
   function addToken (url) {
-    console.log('ACCESS TOKEN', config.githubAccessToken);
     return Url(url).q({access_token: config.githubAccessToken}).url;
   }
 }
 
 /**
  * Get README data by fetching from package root (via unpkg.com).
+ * Attempt each valid README filename.
  */
 function fetchReadme (packageRoot) {
-  var readmeUrl = urlJoin(packageRoot, 'README.md');
+  const readmeFilenames = ['README.md', 'readme.md', 'Readme.md', 'README.markdown',
+                           'readme.markdown', 'README.mkd', 'readme.mkd'];
 
   // Grab from cache.
-  if (cache[readmeUrl]) { return Promise.resolve(cache[readmeUrl]); }
+  for (let i = 0; i < readmeFilenames.length; i++) {
+    let readmeUrl = urlJoin(packageRoot, readmeFilenames[i]);
+    if (cache[readmeUrl]) { return Promise.resolve(cache[readmeUrl]); }
+  }
 
-  return new Promise(function (resolve, reject) {
+  /**
+   * Helper function to make multiple attempts for each valid README filename.
+   */
+  function fetchReadme (i, resolve) {
+    const readmeUrl = urlJoin(packageRoot, readmeFilenames[i]);
     req
       .get(readmeUrl)
       .then(function (res) {
-        var data = {
+        const data = {
           text: res.text,
           url: readmeUrl
         };
         cache[readmeUrl] = data;
         resolve(data);
-      }).catch(handleError);
+      }, function (err) {
+        if (i + 1 < readmeFilenames.length) {
+          fetchReadme(i + 1, resolve);
+        } else {
+          console.error('Error fetching README', packageRoot);
+        }
+      });
+  }
+
+  return new Promise((resolve, reject) => {
+    fetchReadme(0, resolve);
   });
 }
-
-// Promise catcher.
-function handleError (err) { console.log(err.stack); }
 
 module.exports = {
   cache: cache,
