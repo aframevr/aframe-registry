@@ -169,6 +169,13 @@ components:
         version: 0.4.x
         path: dist/aframe-speech-command-component.min.js
 
+  super-hands:
+    names: drag-droppable, grabbable, hoverable, stretchable, super-hands
+    versions:
+      0.4.0:
+        version: 0.2.x
+        path: dist/super-hands.min.js
+
 shaders:
 
   aframe-sun-sky:
