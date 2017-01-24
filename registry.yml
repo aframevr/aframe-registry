@@ -186,6 +186,13 @@ components:
         version: 0.2.x
         path: dist/super-hands.min.js
 
+  aframe-persist-component:
+    names: persist
+    versions:
+      0.4.0:
+        version: 0.1.0
+        path: aframe-persist-component.js
+
 shaders:
 
   aframe-sun-sky:
