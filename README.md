@@ -1,12 +1,54 @@
 # aframe-registry
 
-Curated collection of community A-Frame components, shaders, and assets.
+[angle]: https://npmjs.com/package/angle
 
-[VIEW SITE](https://aframevr.github.io/aframe-registry/)
+Curated collection of community A-Frame components.
+
+[VIEW SITE](https://aframe.io/registry/)
 
 <img src="https://rawgit.com/aframevr/aframe-registry/master/scripts/placeholder.svg" height="320">
 
 ## Introduction
+
+The Registry collects components from the community. We curate them to make
+sure they work for the versions of A-Frame they say they work. We also try to
+improve the components as they come in with code review and API suggestions.
+Versioning is handled so you don't have to look for which version of the
+component works with your version of A-Frame. As a component repository,
+the Registry is similar to the Unity Asset Store or npm.
+
+### Usage
+
+You can install or try out components from the Registry in one of several ways.
+
+#### angle
+
+[angle](https://npmjs.com/package/angle) is a command-line interface (CLI)
+for A-Frame. You can install components through this CLI straight into your
+HTML file. angle will inject the appropriate `<script>` tag pointing to a CDN
+depending on your version of A-Frame:
+
+```
+npm install -g angle && angle install aframe-physics-system
+```
+
+#### Download
+
+If you [browse the Registry's website](https://aframe.io/registry/), you'll see
+download links for components. The Registry will currently show builds for the
+latest versions of A-Frame for now. You can either download the file locally,
+or copy and paste the URLs and reference from a `<script>` tag in your HTML.
+
+#### Inspector
+
+If you open any A-Frame scene using [the visual
+Inspector](https://github.com/aframevr/aframe-inspector) with `<ctrl> + <alt> +
+i`, you'll find components from the Registry in the Inspector's dropdowns when
+adding a component to an entity. Straight from the Inspector, you can do things
+such as select animations, physics, or mountains from the dropdown straight
+from the Registry.
+
+## Maintaining the Registry
 
 A single registry file is maintained at `registry.yml`. The format of a
 component looks like:
@@ -61,6 +103,13 @@ aframe-codey-component:
 
 To submit a component, make a pull request adding your component to the
 registry file in the format explained above.
+
+We recommend using [angle's][angle] component template to get started on a component:
+
+```
+npm install -g angle
+angle initcomponent
+```
 
 ### Component Requirements
 
