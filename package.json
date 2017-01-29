@@ -1,6 +1,6 @@
 {
   "name": "aframe-registry",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "aframe_version": "0.4.0",
   "description": "Curated collection of community A-Frame components.",
   "main": "index.js",
