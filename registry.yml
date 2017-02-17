@@ -142,6 +142,13 @@ components:
         version: ^1.2.x
         path: dist/aframe-physics-system.min.js
 
+  aframe-point-component:
+    names: point
+    versions:
+      0.4.0:
+        version: ^1.0.0
+        path: dist/aframe-point-component.min.js
+
   aframe-stats-in-vr-component:
     names: stats-in-vr
     versions:
