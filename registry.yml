@@ -90,6 +90,13 @@ components:
         version: 4.x.x
         path: dist/aframe-layout-component.min.js
 
+  aframe-lerp-component:
+    names: lerp
+    versions:
+      0.4.0:
+        version: ^1.0.2
+        path: dist/aframe-lerp-component.min.js
+
   aframe-mountain-component:
     names: mountain
     versions:
