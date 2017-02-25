@@ -65,8 +65,9 @@ function fetchGithub (repo) {
  * Attempt each valid README filename.
  */
 function fetchReadme (packageRoot) {
-  const readmeFilenames = ['README.md', 'readme.md', 'Readme.md', 'README.markdown',
-                           'readme.markdown', 'README.mkd', 'readme.mkd'];
+  const readmeFilenames = [
+    'README.md', 'readme.md', 'Readme.md', 'README.markdown',
+    'readme.markdown', 'README.mkd', 'readme.mkd'];
 
   // Grab from cache.
   for (let i = 0; i < readmeFilenames.length; i++) {
@@ -89,6 +90,7 @@ function fetchReadme (packageRoot) {
         cache[readmeUrl] = data;
         resolve(data);
       }, function (err) {
+        if (err) { console.error(err); }
         if (i + 1 < readmeFilenames.length) {
           fetchReadme(i + 1, resolve);
         } else {
