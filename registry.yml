@@ -28,13 +28,6 @@ components:
         version: 0.1.x
         path: dist/aframe-auto-detect-controllers-component.min.js
 
-  aframe-bmfont-text-component:
-    names: bmfont-text
-    versions:
-      0.2.0:
-        version: 0.1.x
-        path: dist/aframe-bmfont-text-component.min.js
-
   aframe-crawling-cursor:
     names: crawling-cursor
     versions:
@@ -44,13 +37,6 @@ components:
       0.4.0:
         version: ^1.0.2
         path: dist/aframe-crawling-cursor.min.js
-
-  aframe-extras.animation-mixer:
-    names: animation-mixer
-    versions:
-      0.4.0:
-        version: ^3.2.x
-        path: dist/aframe-extras.animation-mixer.min.js
 
   aframe-extras.json-model:
     names: json-model
@@ -110,13 +96,6 @@ components:
       0.3.0:
         version: 0.3.x
         path: dist/aframe-mountain-component.min.js
-
-  aframe-mouse-cursor-component:
-    names: mouse-cursor
-    versions:
-      0.4.0:
-        version: 0.4.0
-        path: dist/aframe-mouse-cursor-component.min.js
 
   aframe-outline:
     names: outline
