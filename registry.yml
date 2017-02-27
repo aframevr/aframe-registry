@@ -185,6 +185,9 @@ components:
       0.4.0:
         version: 0.2.x
         path: dist/super-hands.min.js
+      0.5.0:
+        version: 0.3.x
+        path: dist/super-hands.min.js
 
 shaders:
 
