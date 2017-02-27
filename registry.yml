@@ -90,6 +90,13 @@ components:
         version: 4.x.x
         path: dist/aframe-layout-component.min.js
 
+  aframe-leap-hands:
+    names: leap-hand
+    versions:
+      0.5.0:
+        version: ^0.7.0
+        path: dist/aframe-leap-hands.min.js
+
   aframe-lerp-component:
     names: lerp
     versions:
