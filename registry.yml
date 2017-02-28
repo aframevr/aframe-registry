@@ -172,18 +172,15 @@ components:
         version: 0.1.x
         path: dist/aframe-teleport-controls.min.js
 
-  aframe-text-component:
-    names: text
+  aframe-text-geometry-component:
+    names: text-geometry
     versions:
-      0.2.0:
-        version: 0.1.x
-        path: dist/aframe-text-component.min.js
-      0.3.0:
-        version: 0.3.x
-        path: dist/aframe-text-component.min.js
       0.4.0:
-        version: 0.4.x
-        path: dist/aframe-text-component.min.js
+        version: 0.5.x
+        path: dist/aframe-text-geometry-component.min.js
+      0.5.0:
+        version: 0.5.x
+        path: dist/aframe-text-geometry-component.min.js
 
   aframe-speech-command-component:
     names: speech-command
