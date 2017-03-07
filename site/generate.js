@@ -1,12 +1,26 @@
 var fs = require('fs');
 var nunjucks = require('nunjucks');
 
-nunjucks.configure('site');
-
 var aframeVersion = require('../package.json').aframe_version;
 
-var registry = JSON.parse(fs.readFileSync(`./build/${aframeVersion}.json`, 'utf-8'));
+nunjucks.configure('site');
+
+// Read registry.
+let registry = JSON.parse(fs.readFileSync(`./build/${aframeVersion}.json`, 'utf-8'));
+
+// Create something easy to loop over.
 registry.componentNames = Object.keys(registry.components).sort();
 
-var indexHtml = nunjucks.render('index.html', registry);
+// Build pretty name.
+registry.componentNames.forEach(componentName => {
+  registry.components[componentName].siteName = componentName
+    .replace('aframe-', '')
+    .replace('-component', '')
+    .replace(/-/g, ' ')
+    .replace(/\./g, ': ')
+    .replace(/\b\w/g, l => l.toUpperCase())
+    .replace(/vr/g, 'VR');
+});
+
+const indexHtml = nunjucks.render('index.html', registry);
 fs.writeFileSync('index.html', indexHtml);
