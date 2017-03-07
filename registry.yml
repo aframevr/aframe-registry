@@ -192,6 +192,16 @@ components:
         version: 0.5.x
         path: dist/aframe-text-geometry-component.min.js
 
+  aframe-ui-widgets:
+    names: ui-button, ui-rotary, ui-toggle, ui-slider
+    versions:
+      0.4.0:
+        version: 1.0.2
+        path: dist/aframe-ui-widgets.min.js
+      0.5.0:
+        version: 1.0.2
+        path: dist/aframe-ui-widgets.min.js
+
   aframe-speech-command-component:
     names: speech-command
     versions:
