@@ -38,6 +38,13 @@ components:
         version: ^1.0.2
         path: dist/aframe-crawling-cursor.min.js
 
+  aframe-controller-cursor-component:
+    names: controller-cursor
+    versions:
+      0.5.0:
+        version: ^0.2.x
+        path: dist/aframe-controller-cursor-component.min.js
+
   aframe-extras.json-model:
     names: json-model
     versions:
