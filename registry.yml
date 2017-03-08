@@ -172,7 +172,7 @@ components:
         version: 0.1.x
         path: dist/aframe-teleport-controls.min.js
       0.5.0:
-        version: 0.2.x
+        version: 0.1.x
         path: dist/aframe-teleport-controls.min.js
 
   aframe-text-geometry-component:
