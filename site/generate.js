@@ -19,7 +19,9 @@ registry.componentNames.forEach(componentName => {
     .replace(/-/g, ' ')
     .replace(/\./g, ': ')
     .replace(/\b\w/g, l => l.toUpperCase())
-    .replace(/vr/g, 'VR');
+    .replace(/Ui /g, 'UI ')
+    .replace(/vr/g, 'VR')
+    .replace(/ Vr/g, ' VR');
 });
 
 const indexHtml = nunjucks.render('index.html', registry);
