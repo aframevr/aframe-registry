@@ -167,6 +167,9 @@ components:
       0.2.0:
         version: 0.2.x
         path: dist/aframe-stereo-component.min.js
+      0.5.0:
+        version: 0.5.x
+        path: dist/aframe-stereo-component.min.js
 
   aframe-teleport-controls:
     names: teleport-controls
