@@ -124,6 +124,9 @@ angle initcomponent
 - Should include an attractive preview image or GIF in your README for display.
 - Should follow [semver](http://semver.org/) in your component versioning scheme, mirroring A-Frame's latest stable version.
 - Use [angle](https://www.npmjs.com/package/angle), an A-Frame command-line tool, to bootstrap a component template for publishing.
+- Add A-Frame Registry maintainer [Kevin Ngo](https://github.com/ngokevin/) as
+  a collaborator to your GitHub repository and as an owner to your npm package
+  (`npm owner add ngokevin`) if you want help maintaining your component.
 
 ## Updating the Registry
 
