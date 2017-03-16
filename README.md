@@ -118,6 +118,11 @@ angle initcomponent
 3. Must self-register themselves with `AFRAME.registerComponent`.
 4. Must contain documentation on component properties and sample usage in the README.
 5. Must contain at least one example published to GitHub Pages.
+6. A link to the examples must be added as the GitHub repository's Website next
+   to the GitHub repository's Description.
+7. Must make sense in the context of a WebVR application. This can change
+   later, but the initial components of the Registry will be under strict
+   curation.
 
 ### Component Suggestions
 
