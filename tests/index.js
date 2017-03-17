@@ -1,4 +1,5 @@
 /* global describe, it */
+'use strict';
 var assert = require('assert');
 var extendDeep = require('deep-extend');
 var urlJoin = require('url-join');
