@@ -6,6 +6,9 @@ components:
       0.3.0:
         version: ^0.2.0
         path: dist/aframe-alongpath-component.min.js
+      0.5.0:
+        version: ^1.0.x
+        path: dist/aframe-alongpath-component.min.js
 
   aframe-animation-component:
     names: animation
