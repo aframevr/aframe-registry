@@ -116,6 +116,13 @@ components:
         version: ^1.0.2
         path: dist/aframe-lerp-component.min.js
 
+  aframe-line-component:
+    names: line
+    versions:
+      0.5.0:
+        version: 1.0.0
+        path: dist/aframe-line-component.min.js
+
   aframe-mountain-component:
     names: mountain
     versions:
