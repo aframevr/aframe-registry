@@ -20,6 +20,16 @@ components:
         version: ^3.2.x
         path: dist/aframe-animation-component.min.js
 
+  aframe-audioanalyser-component:
+    names: audio-analyser
+    versions:
+      0.4.0:
+        version: 3.0.x
+        path: dist/aframe-audioanalyser-component.min.js
+      0.5.0:
+        version: 3.0.x
+        path: dist/aframe-audioanalyser-component.min.js
+
   aframe-auto-detect-controllers-component:
     names: auto-detect-controllers
     versions:
