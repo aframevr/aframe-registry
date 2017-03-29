@@ -54,6 +54,16 @@ components:
         version: ^0.2.x
         path: dist/aframe-controller-cursor-component.min.js
 
+  aframe-extras.animation-mixer:
+    names: animation-mixer
+    versions:
+      0.4.0:
+        version: ^3.4.x
+        path: dist/aframe-extras.animation-mixer.min.js
+      0.5.0:
+        version: ^3.4.x
+        path: dist/aframe-extras.animation-mixer.min.js
+
   aframe-extras.json-model:
     names: json-model
     versions:
