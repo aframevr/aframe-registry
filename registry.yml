@@ -157,6 +157,13 @@ components:
         version: ^1.0.2
         path: build/aframe-rain.min.js
 
+  aframe-slice9-component:
+    names: slice9
+    versions:
+      0.5.0:
+        version: 1.0.x
+        path: dist/aframe-slice9-component.min.js
+
   aframe-stats-in-vr-component:
     names: stats-in-vr
     versions:
