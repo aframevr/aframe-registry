@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>A-Frame Registry</title>
-    <meta name="description" content="Curated collection of community A-Frame components, shaders, and assets."></meta>
+    <meta name="description" content="A curated collection of community A-Frame components."></meta>
     <meta name="og:image" content="https://aframe.io/images/aframe-logo.png"></meta>
     <link rel="icon" sizes="192x192" href="https://aframe.io/images/aframe-logo-192.png"></link>
-    <link rel="stylesheet" type="text/css" href="site/index.css"></link>
-    <link rel="stylesheet" type="text/css" href="site/fonts.css"></link>
+    <link rel="stylesheet" type="text/css" href="site/css/index.css"></link>
+    <link rel="stylesheet" type="text/css" href="site/css/fonts.css"></link>
+    <script src="site/js/blazy.min.js"></script>
   </head>
   <body>
     <header>
@@ -35,12 +36,11 @@
     </div>
 
     <div class="content">
-
       <ul id="components">
         {% for componentName in componentNames -%}
           {% set component = components[componentName] %}
           <li class="component">
-            <div class="component__image" style="background-image: url({{ component.image }})"></div>
+            <div class="component__image b-lazy" data-src="{{ component.image }}"></div>
             <div class="component__infowrapper">
               <h1 class="component__title">
                 <a href="{{ component.npmUrl }}">{{ component.siteName }}</a>
@@ -68,7 +68,6 @@
                 </a>
               </div>
             </div>
-
           </li>
         {% endfor %}
       </ul>
@@ -84,6 +83,8 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-80530812-4', 'auto');
       ga('send', 'pageview');
+
+      new window.Blazy();
     </script>
   </body>
 </html>
