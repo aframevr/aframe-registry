@@ -61,8 +61,15 @@ components:
         version: ^3.4.x
         path: dist/aframe-extras.animation-mixer.min.js
       0.5.0:
-        version: ^3.4.x
+        version: ^3.5.x
         path: dist/aframe-extras.animation-mixer.min.js
+
+  aframe-extras.grid:
+    names: grid
+    versions:
+      0.5.0:
+        version: ^3.5.x
+        path: dist/aframe-extras.grid.min.js
 
   aframe-extras.json-model:
     names: json-model
@@ -71,7 +78,7 @@ components:
         version: ^3.2.x
         path: dist/aframe-extras.json-model.min.js
       0.5.0:
-        version: ^3.3.x
+        version: ^3.5.x
         path: dist/aframe-extras.json-model.min.js
 
   aframe-extras.object-model:
@@ -81,8 +88,22 @@ components:
         version: ^3.2.x
         path: dist/aframe-extras.object-model.min.js
       0.5.0:
-        version: ^3.3.x
+        version: ^3.5.x
         path: dist/aframe-extras.object-model.min.js
+
+  aframe-extras.ocean:
+    names: ocean
+    versions:
+      0.5.0:
+        version: ^3.5.x
+        path: dist/aframe-extras.ocean.min.js
+
+  aframe-extras.tube:
+    names: tube
+    versions:
+      0.5.0:
+        version: ^3.5.x
+        path: dist/aframe-extras.tube.min.js
 
   aframe-event-set-component:
     names: event-set
