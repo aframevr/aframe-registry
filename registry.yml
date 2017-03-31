@@ -71,6 +71,7 @@ components:
   aframe-extras.json-model:
     names: json-model
     path: dist/aframe-extras.json-model.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570651/7923368a-1621-11e7-8acb-7477417fb5d8.png
     versions:
       0.4.0:
         version: ^3.2.x
@@ -80,6 +81,7 @@ components:
   aframe-extras.object-model:
     names: object-model
     path: dist/aframe-extras.object-model.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570655/7b9294d8-1621-11e7-93b1-4e24e8448959.png
     versions:
       0.4.0:
         version: ^3.2.x
