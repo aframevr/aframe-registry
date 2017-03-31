@@ -162,7 +162,27 @@ describe('build', () => {
 });
 
 describe('metadata (base)', () => {
-  it('gets file/filename', done => {
+  it('gets file/filename via root', done => {
+    var components = componentFactory({'0.5.0': {version: '1.2.3'}});
+    components.components.test.path = 'dist/test.js';
+    build(components, fetcherFactory()).then(output => {
+      var component = output['0.5.0'].components.test;
+      assert.equal(component.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
+      assert.equal(component.filename, 'test.js');
+    }).then(done, done);
+  });
+
+  it('gets file/filename via version', done => {
+    build(componentFactory(), fetcherFactory()).then(output => {
+      var component = output['0.2.0'].components.test;
+      assert.equal(component.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
+      assert.equal(component.filename, 'test.js');
+    }).then(done, done);
+  });
+
+  it('gets file/filename via version override', done => {
+    var components = componentFactory();
+    components.components.test.path = 'dist/testBase.js';
     build(componentFactory(), fetcherFactory()).then(output => {
       var component = output['0.2.0'].components.test;
       assert.equal(component.file, urlJoin(CDN, 'test@1.2.3/dist/test.js'));
@@ -192,6 +212,15 @@ describe('metadata (base)', () => {
     build(componentFactory(), fetcherFactory()).then(output => {
       var component = output['0.2.0'].components.test;
       assert.equal(component.version, '1.2.3');
+    }).then(done, done);
+  });
+
+  it('gets defined image', done => {
+    var components = componentFactory();
+    components.components.test.image = 'foo.gif';
+    build(components, fetcherFactory()).then(output => {
+      var component = output['0.2.0'].components.test;
+      assert.equal(component.image, 'foo.gif');
     }).then(done, done);
   });
 });

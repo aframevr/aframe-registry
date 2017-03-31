@@ -33,18 +33,31 @@ function getMetadata (npmName, component, aframeVersion, stubFetchers) {
         var githubData = data[0];
         var readmeData = data[1];
 
+        // Get file and filename. Can either specify `path` in root of component metadata
+        // or override per version.
+        var file;
+        var fileName;
+        if (componentVersionInfo.path) {
+          file = urlJoin(packageRoot, componentVersionInfo.path);
+          filename = path.basename(componentVersionInfo.path);
+        } else {
+          file = urlJoin(packageRoot, component.path);
+          filename = path.basename(component.path);
+        }
+
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
         resolve({
           author: npmData.author.trim(),
           authorName: npmData.author.split('<')[0].trim(),
           description: npmData.description,
-          file: urlJoin(packageRoot, componentVersionInfo.path),
-          filename: path.basename(componentVersionInfo.path),
+          file: file,
+          filename: filename,
           githubCreated: moment(githubData.created_at).format('MMMM Do YYYY'),
           githubUpdated: moment(githubData.updated_at).format('MMMM Do YYYY'),
           githubUrl: githubData.html_url,
           githubStars: githubData.stargazers_count,
-          image: (componentVersionInfo.image ||
+          image: (component.image ||
+                  componentVersionInfo.image ||
                   parseImgFromText(readmeData.text, packageRoot) ||
                   config.placeholderImage),
           license: npmData.license,
