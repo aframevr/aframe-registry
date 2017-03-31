@@ -65,7 +65,7 @@ components:
         path: dist/aframe-extras.animation-mixer.min.js
 
   aframe-extras.grid:
-    names: grid, a-grid
+    names: grid
     versions:
       0.5.0:
         version: ^3.5.x
@@ -92,14 +92,14 @@ components:
         path: dist/aframe-extras.object-model.min.js
 
   aframe-extras.ocean:
-    names: ocean, a-ocean
+    names: ocean
     versions:
       0.5.0:
         version: ^3.5.x
         path: dist/aframe-extras.ocean.min.js
 
   aframe-extras.tube:
-    names: tube, a-tube
+    names: tube
     versions:
       0.5.0:
         version: ^3.5.x
