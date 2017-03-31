@@ -36,7 +36,7 @@ function getMetadata (npmName, component, aframeVersion, stubFetchers) {
         // Get file and filename. Can either specify `path` in root of component metadata
         // or override per version.
         var file;
-        var fileName;
+        var filename;
         if (componentVersionInfo.path) {
           file = urlJoin(packageRoot, componentVersionInfo.path);
           filename = path.basename(componentVersionInfo.path);
