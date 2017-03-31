@@ -203,6 +203,7 @@ components:
   aframe-slice9-component:
     names: slice9
     path: dist/aframe-slice9-component.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570251/5d3bb41c-161f-11e7-91c7-5ef1035f3241.png
     versions:
       0.5.0:
         version: 1.0.x
