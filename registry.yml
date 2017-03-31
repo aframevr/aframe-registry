@@ -2,285 +2,269 @@ components:
 
   aframe-alongpath-component:
     names: alongpath
+    path: dist/aframe-alongpath-component.min.js
     versions:
       0.3.0:
         version: ^0.2.0
-        path: dist/aframe-alongpath-component.min.js
       0.5.0:
         version: ^1.0.x
-        path: dist/aframe-alongpath-component.min.js
 
   aframe-animation-component:
     names: animation
+    path: dist/aframe-animation-component.min.js
     versions:
       0.3.0:
         version: ^3.0.x
-        path: dist/aframe-animation-component.min.js
       0.5.0:
         version: ^3.2.x
-        path: dist/aframe-animation-component.min.js
 
   aframe-audioanalyser-component:
     names: audio-analyser
+    path: dist/aframe-audioanalyser-component.min.js
     versions:
       0.4.0:
         version: 3.0.x
-        path: dist/aframe-audioanalyser-component.min.js
       0.5.0:
         version: 3.0.x
-        path: dist/aframe-audioanalyser-component.min.js
 
   aframe-auto-detect-controllers-component:
     names: auto-detect-controllers
+    path: dist/aframe-auto-detect-controllers-component.min.js
     versions:
       0.4.0:
         version: 0.1.x
-        path: dist/aframe-auto-detect-controllers-component.min.js
 
   aframe-crawling-cursor:
     names: crawling-cursor
+    path: dist/aframe-crawling-cursor.min.js
     versions:
       0.3.0:
         version: ^1.0.2
-        path: dist/aframe-crawling-cursor.min.js
       0.4.0:
         version: ^1.0.2
-        path: dist/aframe-crawling-cursor.min.js
 
   aframe-controller-cursor-component:
     names: controller-cursor
+    path: dist/aframe-controller-cursor-component.min.js
     versions:
       0.5.0:
         version: ^0.2.x
-        path: dist/aframe-controller-cursor-component.min.js
 
   aframe-extras.animation-mixer:
     names: animation-mixer
+    path: dist/aframe-extras.animation-mixer.min.js
     versions:
       0.4.0:
         version: ^3.4.x
-        path: dist/aframe-extras.animation-mixer.min.js
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.animation-mixer.min.js
 
   aframe-extras.grid:
     names: grid
+    path: dist/aframe-extras.grid.min.js
     versions:
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.grid.min.js
 
   aframe-extras.json-model:
     names: json-model
+    path: dist/aframe-extras.json-model.min.js
     versions:
       0.4.0:
         version: ^3.2.x
-        path: dist/aframe-extras.json-model.min.js
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.json-model.min.js
 
   aframe-extras.object-model:
     names: object-model
+    path: dist/aframe-extras.object-model.min.js
     versions:
       0.4.0:
         version: ^3.2.x
-        path: dist/aframe-extras.object-model.min.js
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.object-model.min.js
 
   aframe-extras.ocean:
     names: ocean
+    path: dist/aframe-extras.ocean.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24569540/72b90028-161b-11e7-9548-d63424d4bc4c.gif
     versions:
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.ocean.min.js
 
   aframe-extras.tube:
     names: tube
+    path: dist/aframe-extras.tube.min.js
     versions:
       0.5.0:
         version: ^3.5.x
-        path: dist/aframe-extras.tube.min.js
 
   aframe-event-set-component:
     names: event-set
+    path: dist/aframe-event-set-component.min.js
     versions:
       0.3.0:
         version: ^3.0.x
-        path: dist/aframe-event-set-component.min.js
       0.4.0:
         version: ^3.0.x
-        path: dist/aframe-event-set-component.min.js
 
   aframe-firebase-component:
     names: firebase, firebase-broadcast
+    path: dist/aframe-firebase-component.min.js
     inspector: false
     versions:
       0.3.0:
         version: ^3.0.0
-        path: dist/aframe-firebase-component.min.js
       0.4.0:
         version: ^3.0.0
-        path: dist/aframe-firebase-component.min.js
       0.5.0:
         version: ^4.0.x
-        path: dist/aframe-firebase-component.min.js
 
   aframe-gearvr-controls-component:
     names: gearvr-controls
+    path: dist/aframe-gearvr-controls-component.min.js
     versions:
       0.4.0:
         version: 0.1.x
-        path: dist/aframe-gearvr-controls-component.min.js
 
   aframe-layout-component:
     names: layout
+    path: dist/aframe-layout-component.min.js
     versions:
       0.3.0:
         version: 3.x.x
-        path: dist/aframe-layout-component.min.js
       0.4.0:
         version: 4.x.x
-        path: dist/aframe-layout-component.min.js
 
   aframe-leap-hands:
     names: leap-hand
+    path: dist/aframe-leap-hands.min.js
     versions:
       0.5.0:
         version: ^0.7.x
-        path: dist/aframe-leap-hands.min.js
 
   aframe-lerp-component:
     names: lerp
+    path: dist/aframe-lerp-component.min.js
     versions:
       0.4.0:
         version: ^1.0.2
-        path: dist/aframe-lerp-component.min.js
 
   aframe-line-component:
     names: line
+    path: dist/aframe-line-component.min.js
     versions:
       0.5.0:
         version: 1.0.0
-        path: dist/aframe-line-component.min.js
 
   aframe-mountain-component:
     names: mountain
+    path: dist/aframe-mountain-component.min.js
     versions:
       0.3.0:
         version: 0.3.x
-        path: dist/aframe-mountain-component.min.js
 
   aframe-outline:
     names: outline
+    path: build/aframe-outline.min.js
     versions:
       0.4.0:
         version: ^1.1.0
-        path: build/aframe-outline.min.js
 
   aframe-particle-system-component:
     names: particle-system
+    path: dist/aframe-particle-system-component.min.js
     versions:
       0.3.0:
-        version: ^1.0.4
-        path: dist/aframe-particle-system-component.min.js
+        version: 1.0.4
+      0.5.0:
+        version: 1.0.9
 
   aframe-physics-system:
     names: [dynamic-body, static-body]
+    path: dist/aframe-physics-system.min.js
     versions:
       0.3.0:
         version: ^1.0.x
-        path: dist/aframe-physics-system.min.js
       0.4.0:
         version: ^1.2.x
-        path: dist/aframe-physics-system.min.js
       0.5.0:
         version: ^1.3.x
-        path: dist/aframe-physics-system.min.js
 
   aframe-rain:
     names: rain
+    path: build/aframe-rain.min.js
     versions:
       0.4.0:
         version: ^1.0.2
-        path: build/aframe-rain.min.js
 
   aframe-slice9-component:
     names: slice9
+    path: dist/aframe-slice9-component.min.js
     versions:
       0.5.0:
         version: 1.0.x
-        path: dist/aframe-slice9-component.min.js
 
   aframe-stats-in-vr-component:
     names: stats-in-vr
+    path: dist/aframe-stats-in-vr-component.min.js
     versions:
       0.4.0:
         version: 0.1.x
-        path: dist/aframe-stats-in-vr-component.min.js
 
   aframe-stereo-component:
     names: stereo
+    path: dist/aframe-stereo-component.min.js
     versions:
       0.2.0:
         version: 0.2.x
-        path: dist/aframe-stereo-component.min.js
       0.5.0:
         version: 0.5.x
-        path: dist/aframe-stereo-component.min.js
 
   aframe-teleport-controls:
     names: teleport-controls
+    path: dist/aframe-teleport-controls.min.js
     versions:
       0.4.0:
         version: 0.1.x
-        path: dist/aframe-teleport-controls.min.js
       0.5.0:
         version: 0.2.x
-        path: dist/aframe-teleport-controls.min.js
 
   aframe-text-geometry-component:
     names: text-geometry
+    path: dist/aframe-text-geometry-component.min.js
     versions:
       0.4.0:
         version: 0.5.x
-        path: dist/aframe-text-geometry-component.min.js
       0.5.0:
         version: 0.5.x
-        path: dist/aframe-text-geometry-component.min.js
 
   aframe-ui-widgets:
     names: ui-button, ui-rotary, ui-toggle, ui-slider
+    path: dist/aframe-ui-widgets.min.js
     versions:
       0.4.0:
         version: 1.0.2
-        path: dist/aframe-ui-widgets.min.js
       0.5.0:
         version: 1.0.2
-        path: dist/aframe-ui-widgets.min.js
 
   aframe-speech-command-component:
     names: speech-command
+    path: dist/aframe-speech-command-component.min.js
     versions:
       0.3.0:
         version: 0.3.x
-        path: dist/aframe-speech-command-component.min.js
       0.4.0:
         version: 0.4.x
-        path: dist/aframe-speech-command-component.min.js
 
   super-hands:
     names: drag-droppable, grabbable, hoverable, stretchable, super-hands
+    path: dist/super-hands.min.js
     versions:
       0.4.0:
         version: 0.2.x
-        path: dist/super-hands.min.js
       0.5.0:
         version: 0.3.x
-        path: dist/super-hands.min.js
 
 shaders:
 
