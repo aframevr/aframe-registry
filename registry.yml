@@ -62,6 +62,7 @@ components:
   aframe-extras.grid:
     names: grid
     path: dist/aframe-extras.grid.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24569797/c8c67fd0-161c-11e7-83df-29faa6ef7a4e.png
     versions:
       0.5.0:
         version: ^3.5.x
@@ -95,6 +96,7 @@ components:
   aframe-extras.tube:
     names: tube
     path: dist/aframe-extras.tube.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570200/1d3095cc-161f-11e7-863d-7e39f764475f.png
     versions:
       0.5.0:
         version: ^3.5.x
