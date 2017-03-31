@@ -53,6 +53,7 @@ components:
   aframe-extras.animation-mixer:
     names: animation-mixer
     path: dist/aframe-extras.animation-mixer.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570383/0abd2e0e-1620-11e7-92c1-923ec46c9eb4.gif
     versions:
       0.4.0:
         version: ^3.4.x
@@ -104,6 +105,7 @@ components:
   aframe-event-set-component:
     names: event-set
     path: dist/aframe-event-set-component.min.js
+    image: https://cloud.githubusercontent.com/assets/674727/24570486/76b51306-1620-11e7-8f6c-c05d55bfea82.gif
     versions:
       0.3.0:
         version: ^3.0.x
