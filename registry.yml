@@ -170,6 +170,13 @@ components:
       0.3.0:
         version: 0.3.x
 
+  aframe-motion-capture-components:
+    names: avatar-recorder, avatar-replayer
+    path: dist/aframe-motion-capture-components.min.js
+    versions:
+      0.5.0:
+        version: 0.1.x
+
   aframe-outline:
     names: outline
     path: build/aframe-outline.min.js
