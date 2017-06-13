@@ -9,11 +9,11 @@ nunjucks.configure('site');
 let registry = JSON.parse(fs.readFileSync(`./build/${aframeVersion}.json`, 'utf-8'));
 
 // Create something easy to loop over.
-registry.componentNames = Object.keys(registry.components).sort();
+registry.componentNames = Object.keys(registry.components);
 
 // Build pretty name.
 registry.componentNames.forEach(componentName => {
-  registry.components[componentName].siteName = componentName
+  var siteName = registry.components[componentName].siteName = componentName
     .replace('aframe-', '')
     .replace('-components', '')
     .replace('-component', '')
@@ -23,6 +23,18 @@ registry.componentNames.forEach(componentName => {
     .replace(/Ui /g, 'UI ')
     .replace(/vr/g, 'VR')
     .replace(/ Vr/g, ' VR');
+
+  if (siteName.indexOf('/') !== -1) {
+    registry.components[componentName].siteName = siteName.split('/')[1];
+  }
+});
+
+// Sort.
+registry.componentNames.sort(function (a, b) {
+  if (registry.components[a].siteName < registry.components[b].siteName) {
+    return -1;
+  }
+  return 1;
 });
 
 const indexHtml = nunjucks.render('index.html', registry);

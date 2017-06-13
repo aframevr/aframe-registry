@@ -46,9 +46,17 @@ function getMetadata (npmName, component, aframeVersion, stubFetchers) {
         }
 
         console.log(npmName, 'registered to use', componentVersion, 'for', aframeVersion);
+
+        var author;
+        if (typeof npmData.author === 'string') {
+          author = npmData.author;
+        } else {
+          author = npmData.author.name;
+        }
+
         resolve({
-          author: npmData.author.trim(),
-          authorName: npmData.author.split('<')[0].trim(),
+          author: author.trim(),
+          authorName: author.split('<')[0].trim(),
           description: npmData.description,
           file: file,
           filename: filename,
