@@ -219,6 +219,13 @@ components:
       0.5.0:
         version: 1.0.x
 
+  @ekolabs/aframe-spritesheet-component:
+    names: sprite-sheet
+    versions:
+      0.5.0:
+        version: 0.1.x
+        path: dist/aframe-spritesheet-component.min.js
+
   aframe-stats-in-vr-component:
     names: stats-in-vr
     path: dist/aframe-stats-in-vr-component.min.js
