@@ -15,6 +15,7 @@ registry.componentNames = Object.keys(registry.components).sort();
 registry.componentNames.forEach(componentName => {
   registry.components[componentName].siteName = componentName
     .replace('aframe-', '')
+    .replace('-components', '')
     .replace('-component', '')
     .replace(/-/g, ' ')
     .replace(/\./g, ': ')
