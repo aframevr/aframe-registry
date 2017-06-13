@@ -226,7 +226,7 @@ components:
       0.5.0:
         version: 1.0.x
 
-  @ekolabs/aframe-spritesheet-component:
+  "@ekolabs/aframe-spritesheet-component":
     names: sprite-sheet
     versions:
       0.5.0:
