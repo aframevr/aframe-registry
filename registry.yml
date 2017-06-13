@@ -226,6 +226,16 @@ components:
         version: 0.1.x
         path: dist/aframe-spritesheet-component.min.js
 
+  aframe-point-component:
+    names: point
+    versions:
+      0.4.0:
+        version: ^1.0.0
+        path: dist/aframe-point-component.min.js
+      0.5.0:
+        version: ^1.0.1
+        path: dist/aframe-point-component.min.js
+
   aframe-stats-in-vr-component:
     names: stats-in-vr
     path: dist/aframe-stats-in-vr-component.min.js
