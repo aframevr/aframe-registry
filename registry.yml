@@ -58,7 +58,7 @@ components:
       0.4.0:
         version: ^3.4.x
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-extras.grid:
     names: grid
@@ -66,7 +66,7 @@ components:
     image: https://cloud.githubusercontent.com/assets/674727/24569797/c8c67fd0-161c-11e7-83df-29faa6ef7a4e.png
     versions:
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-extras.json-model:
     names: json-model
@@ -76,7 +76,7 @@ components:
       0.4.0:
         version: ^3.2.x
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-extras.object-model:
     names: object-model
@@ -86,7 +86,7 @@ components:
       0.4.0:
         version: ^3.2.x
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-extras.ocean:
     names: ocean
@@ -94,7 +94,7 @@ components:
     image: https://cloud.githubusercontent.com/assets/674727/24569540/72b90028-161b-11e7-9548-d63424d4bc4c.gif
     versions:
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-extras.tube:
     names: tube
@@ -102,7 +102,7 @@ components:
     image: https://cloud.githubusercontent.com/assets/674727/24570200/1d3095cc-161f-11e7-863d-7e39f764475f.png
     versions:
       0.5.0:
-        version: ^3.5.x
+        version: ^3.8.x
 
   aframe-event-set-component:
     names: event-set
