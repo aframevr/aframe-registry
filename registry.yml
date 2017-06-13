@@ -163,6 +163,13 @@ components:
       0.5.0:
         version: 1.0.0
 
+ aframe-log-component:
+    names: log
+    path: dist/aframe-log-component.min.js
+    versions:
+      0.5.0:
+        version: 1.0.x
+
   aframe-mountain-component:
     names: mountain
     path: dist/aframe-mountain-component.min.js
