@@ -95,7 +95,7 @@ header h2 {
   color: #555;
   font-family: Fira Sans;
   padding: 5px 1px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .toolbar input::-webkit-input-placeholder { color: #555; opacity: 1; }
@@ -107,6 +107,7 @@ header h2 {
 
 .toolbar img {
   vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 .toolbar .wrapper {

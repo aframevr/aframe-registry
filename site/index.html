@@ -21,17 +21,15 @@
 
     <div class="toolbar">
       <div class="wrapper">
-        <p style="color: #FAFAFA">The Registry is currently being populated. See <a href="https://github.com/aframevr/awesome-aframe">awesome-aframe</a> and the <a href="https://aframe.io/blog/">blog</a> for more components!</p>
-        <!--
-        <div class="filtertype">
+        <!-- <div class="filtertype">
           <img src="site/img/filter.png" alt="filter by type">
           <a href="#">Filter by type</a>
-        </div>
+        </div> -->
         <div class="search">
           <img src="site/img/search.png" alt="search">
-          <input type="text" placeholder="Search...">
+          <input type="text" placeholder="Search..." onkeyup="search(this.value)">
         </div>
-        -->
+        <p style="color: #FAFAFA">The Registry is currently being populated. See <a href="https://github.com/aframevr/awesome-aframe">awesome-aframe</a> and the <a href="https://aframe.io/blog/">blog</a> for more components!</p>
       </div>
     </div>
 
@@ -85,6 +83,16 @@
       ga('send', 'pageview');
 
       new window.Blazy();
+
+      var componentList = document.querySelectorAll('.component');
+      function search(s) {
+        var text = ('innerText' in document.body)? 'innerText' : 'textContent';
+        for (var i = 0; i < componentList.length; i++) {
+          componentList[i].style.display = (componentList[i][text].indexOf(s) !== -1) ? 'flex' : 'none';
+        };
+      }
+
+
     </script>
   </body>
 </html>
