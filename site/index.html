@@ -27,10 +27,15 @@
         </div> -->
         <div class="search">
           <img src="site/img/search.png" alt="search">
-          <input type="text" placeholder="Search..." onkeyup="search(this.value)">
+          <input type="text" id="searchtext" placeholder="Search..." oninput="search()">
+          <a href="#" id="clearsearch" onclick="clearSearch()">&times;</a>
         </div>
         <p style="color: #FAFAFA">The Registry is currently being populated. See <a href="https://github.com/aframevr/awesome-aframe">awesome-aframe</a> and the <a href="https://aframe.io/blog/">blog</a> for more components!</p>
       </div>
+    </div>
+    
+    <div id="searching">
+      <p>Filtering by "<span></span>" (<span></span> results):</p>
     </div>
 
     <div class="content">
@@ -84,12 +89,39 @@
 
       new window.Blazy();
 
+
+      // search
+      
       var componentList = document.querySelectorAll('.component');
-      function search(s) {
+
+      function search() {
+        s = document.getElementById('searchtext').value.trim().toLowerCase();
         var text = ('innerText' in document.body)? 'innerText' : 'textContent';
+        var visibleCount = componentList.length;
+        
         for (var i = 0; i < componentList.length; i++) {
-          componentList[i].style.display = (componentList[i][text].indexOf(s) !== -1) ? 'flex' : 'none';
-        };
+          var visible = (s == '' || componentList[i][text].toLowerCase().indexOf(s) !== -1);
+          if (!visible) { visibleCount--; }
+          componentList[i].style.display = visible ? 'flex' : 'none';
+        }
+
+        var searching = s.length > 0;
+        document.getElementById('searching').style.display = searching > 0 ? 'block' : 'none';
+        document.getElementById('clearsearch').style.visibility = searching > 0 ? 'visible' : 'hidden';
+        if (searching) {
+          var spans = document.querySelectorAll('#searching span');
+          spans[0][text] = s;
+          spans[1][text] = visibleCount;
+        }
+      }
+
+      function clearSearch() {
+        document.getElementById('searchtext').value = '';
+        for (var i = 0; i < componentList.length; i++) {
+          componentList[i].style.display = 'flex';
+        }
+        document.getElementById('searching').style.display = 'none';
+        document.getElementById('clearsearch').style.visibility = 'hidden';
       }
 
 
