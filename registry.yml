@@ -315,3 +315,4 @@ shaders:
       0.3.0:
         version: ^3.0.1
         path: dist/aframe-sun-sky.min.js
+
