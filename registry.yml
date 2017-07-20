@@ -122,6 +122,14 @@ components:
       0.6.0:
         version: ^1.0.x
 
+  aframe-gaze-control-component:
+    names: gaze-control
+    inspector: false
+    path: dist/aframe-gaze-control-component.min.js
+    versions:
+      0.6.0:
+        version: ^1.0.x
+
   aframe-gearvr-controls-component:
     names: gearvr-controls
     path: dist/aframe-gearvr-controls-component.min.js
@@ -311,4 +319,3 @@ shaders:
       0.3.0:
         version: ^3.0.1
         path: dist/aframe-sun-sky.min.js
-
