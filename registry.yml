@@ -239,6 +239,13 @@ components:
         version: ^1.0.1
         path: dist/aframe-point-component.min.js
 
+  aframe-room-component:
+    names: [room,wall,doorhole,doorlink,floor,ceiling,sides]
+    versions:
+      0.6.0:
+        version: ^0.1.0
+        path: dist/aframe-room-component.min.js
+
   aframe-stats-in-vr-component:
     names: stats-in-vr
     path: dist/aframe-stats-in-vr-component.min.js
