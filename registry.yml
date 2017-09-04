@@ -238,6 +238,13 @@ components:
       0.5.0:
         version: ^1.0.1
         path: dist/aframe-point-component.min.js
+  
+  aframe-raytrace-component:
+    names: raytrace
+    versions:
+      0.6.0:
+        version: ^1.0.0
+        path: dist/aframe-raytrace-component.min.js
 
   aframe-stats-in-vr-component:
     names: stats-in-vr
