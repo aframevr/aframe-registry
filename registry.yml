@@ -242,8 +242,8 @@ components:
   aframe-raytrace-component:
     names: raytrace
     versions:
-      0.6.0:
-        version: ^1.0.0
+      0.4.0:
+        version: ^1.1.0
         path: dist/aframe-raytrace-component.min.js
 
   aframe-stats-in-vr-component:
