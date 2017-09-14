@@ -238,7 +238,7 @@ components:
       0.5.0:
         version: ^1.0.1
         path: dist/aframe-point-component.min.js
-  
+
   aframe-raytrace-component:
     names: raytrace
     versions:
@@ -299,13 +299,15 @@ components:
         version: 0.4.x
 
   super-hands:
-    names: clickable, drag-droppable, grabbable, hoverable, stretchable, super-hands
+    names: clickable, drag-droppable, grabbable, hoverable, progressive-controls, stretchable, super-hands
     path: dist/super-hands.min.js
     versions:
       0.4.0:
         version: 0.2.x
       0.5.0:
         version: ^1.0.0
+      0.6.0:
+        version: ^2.0.0
 
 shaders:
 
