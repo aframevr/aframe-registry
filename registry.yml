@@ -63,6 +63,13 @@ components:
         version: ^3.0.0
         path: dist/aframe-firebase-component.min.js
 
+  aframe-gui:
+    names: aframe-gui
+    versions:
+      0.1.0:
+        version: ^0.1.x
+        path: dist/aframe-gui.min.js
+
   aframe-layout-component:
     names: layout
     versions:
