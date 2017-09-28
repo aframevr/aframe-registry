@@ -129,6 +129,13 @@ components:
       0.4.0:
         version: 0.1.x
 
+  aframe-gui:
+    names: aframe-gui
+    versions:
+      0.1.0:
+        version: ^0.1.x
+        path: dist/aframe-gui.min.js
+
   aframe-layout-component:
     names: layout
     path: dist/aframe-layout-component.min.js
