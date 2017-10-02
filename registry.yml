@@ -168,7 +168,6 @@ components:
   aframe-metronome-component:
     names: metronome
     path: aframe-metronome-component.js
-    image: https://raw.githubusercontent.com/rserota/aframe-metronome-component/master/docs/metronome.gif
     versions:
       0.6.0:
         version: 1.2.3
