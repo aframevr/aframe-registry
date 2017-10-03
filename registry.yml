@@ -187,7 +187,13 @@ components:
     versions:
       0.5.0:
         version: 1.0.x
-
+  aframe-metronome-component:
+    names: metronome
+    path: aframe-metronome-component.js
+    versions:
+      0.6.0:
+        version: 1.2.3
+        
   aframe-mountain-component:
     names: mountain
     path: dist/aframe-mountain-component.min.js
