@@ -242,6 +242,14 @@ components:
       0.4.0:
         version: ^1.0.2
 
+  aframe-shake2show-component:
+    names: aframe-shake2show-component
+    path: dist/aframe-shake2show-component.min.js
+    image: https://cloud.githubusercontent.com/assets/347570/21116597/319524b0-c084-11e6-8d09-6ad5db860ed5.gif
+    versions:
+      0.3.0:
+        version: ^1.0.x
+
   aframe-slice9-component:
     names: slice9
     path: dist/aframe-slice9-component.min.js
