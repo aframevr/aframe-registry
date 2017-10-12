@@ -245,7 +245,7 @@ components:
   aframe-shake2show-component:
     names: aframe-shake2show-component
     path: dist/aframe-shake2show-component.min.js
-    image: https://cloud.githubusercontent.com/assets/347570/21116597/319524b0-c084-11e6-8d09-6ad5db860ed5.gif
+    image: https://raw.githubusercontent.com/rdub80/aframe-shake2show-component/master/shake2show-component.gif
     versions:
       0.3.0:
         version: ^1.0.x
