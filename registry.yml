@@ -146,10 +146,11 @@ components:
 
   aframe-gui:
     names: aframe-gui
+    path: dist/aframe-gui.min.js
+    image: https://rdub80.github.io/aframe-gui/examples/aframe-gui-preview.gif
     versions:
-      0.1.0:
+      0.7.0:
         version: ^0.1.x
-        path: dist/aframe-gui.min.js
 
   aframe-layout-component:
     names: layout
