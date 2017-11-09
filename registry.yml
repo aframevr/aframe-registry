@@ -152,15 +152,6 @@ components:
       0.7.0:
         version: ^0.1.x
 
-  aframe-layout-component:
-    names: layout
-    path: dist/aframe-layout-component.min.js
-    versions:
-      0.3.0:
-        version: 3.x.x
-      0.4.0:
-        version: 4.x.x
-
   aframe-leap-hands:
     names: leap-hand
     path: dist/aframe-leap-hands.min.js
