@@ -1,4 +1,13 @@
 components:
+  aframe-uploadcare-component:
+    names: uploadcare
+    versions:
+      0.4.0:
+        version: ^1.0.0
+        path: dist/aframe-uploadcare-component.min.js
+      0.5.0:
+        version: ^1.0.0
+        path: dist/aframe-uploadcare-component.min.js
 
   aframe-alongpath-component:
     names: alongpath
