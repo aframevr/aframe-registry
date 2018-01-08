@@ -200,6 +200,14 @@ components:
       0.5.0:
         version: 0.1.x
 
+  aframe-observer-component:
+    names: observer
+    path: dist/aframe-observer-component.min.js
+    image: https://raw.githubusercontent.com/micataudella/aframe-observer-component/master/img/screenshot.png
+    versions:
+      0.5.0:
+        version: ^1.0.x
+
   aframe-outline:
     names: outline
     path: build/aframe-outline.min.js
