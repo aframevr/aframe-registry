@@ -33,7 +33,14 @@ components:
     versions:
       0.4.0:
         version: 0.1.x
-
+        
+  aframe-charts-component:
+    names: charts
+    path: dist/aframe-charts-component.min.js
+    versions:
+      0.6.0:
+        version: ^1.0.x
+        
   aframe-crawling-cursor:
     names: crawling-cursor
     path: dist/aframe-crawling-cursor.min.js
