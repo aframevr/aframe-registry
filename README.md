@@ -6,7 +6,7 @@ Curated collection of community A-Frame components.
 
 [VIEW SITE](https://aframe.io/registry/)
 
-<img src="https://rawgit.com/aframevr/aframe-registry/master/scripts/placeholder.svg" height="320">
+<img src="https://cdn.jsdelivr.net/gh/aframevr/aframe-registry/scripts/placeholder.svg" height="320">
 
 ## Introduction
 
